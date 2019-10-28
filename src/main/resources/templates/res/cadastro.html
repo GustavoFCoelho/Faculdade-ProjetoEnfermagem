@@ -1,0 +1,113 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Religião</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form th:action="@{/resp/save}" th:object="${responsavel}" method="post">
+            <input type="hidden" th:field="*{resid}">
+            <div class="form-row">
+                <div class="col-12">
+                    <label>Idoso:</label>
+                    <select class="form-control" th:field="*{respacid}" id="">
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <label>Nome do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{resnome}">
+                </div>
+                <div class="col-6">
+                    <label>Sobrenome do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{ressobrenome}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-6">
+                    <label>CPF do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{rescpf}">
+                </div>
+                <div class="col-6">
+                    <label>Data de nascimento do responsavel</label>
+                    <input class="form-control" type="date" th:field="*{resdtnasc}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-3">
+                    <p>Estado(UF):</p>
+                    <select th:field="*{resestado}" class="form-control">
+                        <option value="AC">Acre</option>
+                        <option value="AL">Alagoas</option>
+                        <option value="AP">Amapá</option>
+                        <option value="AM">Amazonas</option>
+                        <option value="BA">Bahia</option>
+                        <option value="CE">Ceará</option>
+                        <option value="DF">Distrito Federal</option>
+                        <option value="ES">Espírito Santo</option>
+                        <option value="GO">Goiás</option>
+                        <option value="MA">Maranhão</option>
+                        <option value="MT">Mato Grosso</option>
+                        <option value="MS">Mato Grosso do Sul</option>
+                        <option value="MG">Minas Gerais</option>
+                        <option value="PA">Pará</option>
+                        <option value="PB">Paraíba</option>
+                        <option value="PR">Paraná</option>
+                        <option value="PE">Pernambuco</option>
+                        <option value="PI">Piauí</option>
+                        <option value="RJ">Rio de Janeiro</option>
+                        <option value="RN">Rio Grande do Norte</option>
+                        <option value="RS">Rio Grande do Sul</option>
+                        <option value="RO">Rondônia</option>
+                        <option value="RR">Roraima</option>
+                        <option value="SC">Santa Catarina</option>
+                        <option value="SP">São Paulo</option>
+                        <option value="SE">Sergipe</option>
+                        <option value="TO">Tocantins</option>
+                    </select>
+                </div>
+                <div class="col-3">
+                    <label>Cidade do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{rescidade}">
+                </div>
+                <div class="col-3">
+                    <label>Rua do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{resendrua}">
+                </div>
+                <div class="col-3">
+                    <label>Número da habitação do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{resendnum}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-3">
+                    <label>DDD do telefone do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{restelddd}">
+                </div>
+                <div class="col-6">
+                    <label>Telefone do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{restelnum1}">
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-3">
+                    <input type="submit" value="Cadastrar" class="btn btn-success">
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</html>

@@ -1,5 +1,7 @@
 package Projeto.Enfermagem.projEnf.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 @Entity
@@ -12,14 +14,14 @@ public class Responsaveis {
     private Paciente respacid;
     private String resnome;
     private String ressobrenome;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate resdtnasc;
     private String resestado;
     private String rescidade;
     private String resendrua;
     private String resendnum;
-    private String restelDDD;
-    private String restelNum1;
-
+    private String restelddd;
+    private String restelnum1;
     public int getResid() { return resid; }
     public void setResid(int resid) { this.resid = resid; }
     public String getRescpf() { return rescpf; }
@@ -40,8 +42,8 @@ public class Responsaveis {
     public void setResendrua(String resendrua) { this.resendrua = resendrua; }
     public String getResendnum() { return resendnum; }
     public void setResendnum(String resendnum) { this.resendnum = resendnum; }
-    public String getRestelDDD() { return restelDDD; }
-    public void setRestelDDD(String restelDDD) { this.restelDDD = restelDDD; }
-    public String getRestelNum1() { return restelNum1; }
-    public void setRestelNum1(String restelNum1) { this.restelNum1 = restelNum1; }
+    public String getRestelddd() { return restelddd; }
+    public void setRestelddd(String restelddd) { this.restelddd = restelddd; }
+    public String getRestelnum1() { return restelnum1; }
+    public void setRestelnum1(String restelnum1) { this.restelnum1 = restelnum1; }
 }
