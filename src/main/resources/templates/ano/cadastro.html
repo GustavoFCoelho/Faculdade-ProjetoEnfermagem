@@ -6,7 +6,7 @@
                 <!-- Cria uma linha -->
                 <div class="col-12">
                     <!-- Espaçamento de colunas -->
-                    <h1 class="text-center">Cadastro de medicamento</h1>
+                    <h1 class="text-center">Cadastro de Anotação</h1>
                 </div>
             </div>
         </div>
@@ -15,11 +15,22 @@
         <form th:action="@{/ano/save}" th:object="${anotacao}" method="post">
             <input type="hidden" th:field="*{anoid}" />
             <div class="form-row">
-                <div class="col-4">
-                    <label>Religião:</label>
-                    <select th:field="${anopacid}" class="form-control">
+                <div class="col-6">
+                    <label>Idoso:</label>
+                    <select th:field="*{anopacid}" class="form-control">
                         <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
                     </select>
+                </div>
+
+                <div class="col-6">
+                    <label>Data da anotação</label>
+                    <input class="form-control" type="date" th:field="*{anodt}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-12">
+                    <label>Descrição da anotação</label>
+                    <textarea class="form-control" th:field="*{anocamp}"></textarea>
                 </div>
             </div>
             <hr>

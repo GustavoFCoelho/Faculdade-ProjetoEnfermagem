@@ -1,5 +1,7 @@
 package Projeto.Enfermagem.projEnf.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -11,5 +13,15 @@ public class Anotacoes {
     @ManyToOne
     private Paciente anopacid;
     private String anocamp;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate anodt;
+
+    public int getAnoid() { return anoid; }
+    public void setAnoid(int anoid) { this.anoid = anoid; }
+    public Paciente getAnopacid() { return anopacid; }
+    public void setAnopacid(Paciente anopacid) { this.anopacid = anopacid; }
+    public String getAnocamp() { return anocamp; }
+    public void setAnocamp(String anocamp) { this.anocamp = anocamp; }
+    public LocalDate getAnodt() { return anodt; }
+    public void setAnodt(LocalDate anodt) { this.anodt = anodt; }
 }

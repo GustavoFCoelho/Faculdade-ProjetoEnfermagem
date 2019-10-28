@@ -15,7 +15,9 @@ public class PacService {
     @Autowired
     private RelService reService;
 
-    public void savePac(Paciente pac){ pacInterface.save(pac); }
+    public void savePac(Paciente pac){
+        pacInterface.save(pac);
+    }
     public List<Religiao> callRegis(){ return reService.findAllRels(); }
     public List<Paciente> callPacs(){ return pacInterface.findAll(); }
 }

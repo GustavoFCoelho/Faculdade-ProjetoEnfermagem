@@ -80,7 +80,7 @@
                 <div class="form-row">
                     <div class="col-4">
                         <label>Religião:</label>
-                        <select class="form-control">
+                        <select th:field="*{pacreligiao}"  class="form-control">
                             <option th:each=" rel : ${rels}" th:value="${rel.relid}" th:text="${rel.relnome}"></option>
                         </select>
                     </div>
@@ -259,7 +259,6 @@
                     placeholder="EX: o idoso tem alergia a gatos." name="pacAlerDesc"
                     th:field="*{pacalergiadesc}"></textarea>
             </div>
-    </div>
     <hr />
     <div class="form-row text-center">
         <div class="col-12">

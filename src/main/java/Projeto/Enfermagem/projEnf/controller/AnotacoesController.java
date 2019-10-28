@@ -26,12 +26,12 @@ public class AnotacoesController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(Anotacoes ano, BindingResult result){
+    public ModelAndView save(Anotacoes anotacao, BindingResult result){
         if(result.hasErrors()){
             return new ModelAndView("layout", "conteudo", "/ano/cadastro");
         }
 
-        anotacoesService.save(ano);
+        anotacoesService.save(anotacao);
         return new ModelAndView("redirect:/ano");
     }
 }
