@@ -1,0 +1,34 @@
+<div th:fragment="menuzin">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" th:href="@{/}">Lar Santo Antônio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> <span
+                class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="navbar-nav mr-auto"><a href="main" class="nav-link">Inicio</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cadastros</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="/pac" class="dropdown-item">Pacientes</a>
+                        <a href="" class="dropdown-item">Responsável</a>
+                        <a href="/rel" class="dropdown-item">Religião</a>
+                        <a href="/med" class="dropdown-item">Medicamento</a>
+                        <a href="" class="dropdown-item">Evento</a>
+                        <a href="" class="dropdown-item">Agenda Medicação</a>
+                        <a href="" class="dropdown-item">Anotações</a>
+                    </div>
+                </li>
+                <li class="navbar-nav mr-auto"><a href="" class="nav-link">Prontuario</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Agenda</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="" class="dropdown-item">Compromissos</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

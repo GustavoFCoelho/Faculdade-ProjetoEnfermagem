@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de medicamento</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form th:action="@{/ano/save}" th:object="${anotacao}" method="post">
+            <input type="hidden" th:field="*{anoid}" />
+            <div class="form-row">
+                <div class="col-4">
+                    <label>Religião:</label>
+                    <select th:field="${anopacid}" class="form-control">
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-3">
+                    <input type="submit" value="Cadastrar" class="btn btn-success">
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

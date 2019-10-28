@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Prontuário Eletrônico</title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/css/jquery-confirm.css" rel="stylesheet"/>
+    <script src="/js/jqueryValidate.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/jquery-confirm.js"></script>
+    <script src="/js/func.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div th:include="menu :: menuzin"></div>
+    <div th:include="${conteudo} :: corpo"></div>
+</body>
+
+</html>
