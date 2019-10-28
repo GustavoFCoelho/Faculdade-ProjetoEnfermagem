@@ -1,5 +1,7 @@
 package Projeto.Enfermagem.projEnf.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,7 +13,9 @@ public class Agenda {
     @ManyToOne
     private Paciente anopacid;
     private String agecamp;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate agedt;
+    @DateTimeFormat(pattern = "HH:mm")
     private LocalTime agehora;
     private String agerua;
     private String ageruanum;

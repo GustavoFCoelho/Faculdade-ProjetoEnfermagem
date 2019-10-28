@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Agendar Eventos</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form th:action="@{/age/save}" th:object="${agenda}" method="post">
+            <div class="form-row">
+                <div class="col">
+                    <label>Selecione o paciente</label>
+                    <select class="form-control" th:field="*{anopacid}">
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Digite o Compromisso:</label>
+                    <input class="form-control" type="text" th:field="*{agecamp}" placeholder="Digite o compromisso">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Informe a Data:</label>
+                    <input class="form-control" type="date" th:field="*{agedt}">
+                </div>
+                <div class="col">
+                    <label>Informe o horario</label>
+                    <input class="form-control" type="time" th:field="*{agehora}">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label>Digite o Endereço</label>
+                    <input class="form-control" type="text" th:field="*{agerua}" placeholder="Digite o endereço">
+                </div>
+                <div class="col">
+                    <label>Digite o Número</label>
+                    <input class="form-control" type="text" th:field="*{ageruanum}" placeholder="Digite o número">
+                </div>
+            </div><hr />
+            <div class="form-row text-center">
+                <div class="col-12">
+                    <input type="submit" class="btn btn-success" value="Cadastrar" />
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+</html>

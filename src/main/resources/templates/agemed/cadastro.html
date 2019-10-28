@@ -1,0 +1,139 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Anotação</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form th:action="@{/agemed/save}" th:object="${agemed}" method="post">
+            <div class="form-row">
+                <div class="col-6">
+                    <p>Selecione o paciente:</p>
+                    <select th:field="*{pacmedpacid}" class="form-control" name="paciente">
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    </select>
+                </div>
+                <div class="col-6">
+                    <p>Selecione o Medicamento:</p>
+                    <select th:field="*{pacmedmedid}" class="form-control" name="medicamento">
+                        <option th:each=" med : ${medicamentos}" th:value="${med.medid}" th:text="${med.mednome}"></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-4">
+                    <label>Dosagem do medicamento:</label>
+                    <input th:field="*{pacmeddosagem}" class="form-control" type="text" name="pacmedDosagem" placeholder="Ex: 15mg" value=""/>
+                </div>
+                <div class="col-4">
+                    <label>Inicio da medicação dia:</label>
+                    <input th:field="*{pacmedinicio}" class="form-control" type="date" name="pacmedDatin" value=""/>
+                </div>
+                <div class="col-4">
+                    <label>Fim da medicação dia:</label>
+                    <input th:field="*{pacmedfim}" class="form-control" type="date" name="pacmedDaten" value=""/>
+                </div>
+            </div>
+            <div id="horaEve1" class="form-row">
+                <div class="col">
+                    <label>Informe o horário</label>
+                    <input th:field="*{pacmedhora}" class="form-control" type="time" name="horaEvento" value="">
+                </div>
+            </div>
+            <div id="horaEve2" class="form-row">
+                <div class="col">
+                    <label>Informe o horário</label>
+                    <input th:field="*{pacmedhora2}" class="form-control" type="time" name="horaEvento2" value="">
+                </div>
+            </div>
+            <div id="horaEve3" class="form-row">
+                <div class="col">
+                    <label>Informe o horário</label>
+                    <input th:field="*{pacmedhora3}" class="form-control" type="time" name="horaEvento3" value="">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <input class="btn btn-dark" type="button" value="Adicionar um horario"/>
+                    <input class="btn btn-dark" type="button" value="Adicionar um horario"/>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-5">
+                    <label>O Paciente tem algum dia especifico para tomar a medicação?</label>
+                </div>
+                <div class="col-1">
+                    <input type="radio" class="form-check-input" th:field="*{pacmeddias}" th:value="TRUE"/><label class="form-check-label">Sim</label>
+                </div>
+                <div class="col-1">
+                    <input type="radio" class="form-check-input" th:field="*{pacmeddias}" th:value="FALSE"/><label class="form-check-label">Não</label>
+                </div>
+            </div>
+            <div id="DiasSemana" class="form-row">
+                <div class="col">
+                    <label>Domingo:</label>
+                    <select th:field="*{pacmeddom}" class="form-control" name="domMed">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Segunda:</label>
+                    <select th:field="*{pacmedseg}" class="form-control" name="segMed">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="">Terça:</label>
+                    <select th:field="*{pacmedter}" name="terMed" class="form-control">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="">Quarta:</label>
+                    <select th:field="*{pacmedqua}" name="quaMed" class="form-control">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="">Quinta:</label>
+                    <select th:field="*{pacmedqui}" name="quiMed" class="form-control">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Sexta:</label>
+                    <select th:field="*{pacmedsex}" name="sexMed" class="form-control">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label>Sábado:</label>
+                    <select th:field="*{pacmedsab}" name="sabMed" class="form-control">
+                        <option th:value="FALSE">Não</option>
+                        <option th:value="TRUE">Sim</option>
+                    </select>
+                </div>
+            </div>
+            <hr>
+            <div class="form-row text-center">
+                <div class="col-12">
+                    <input class="btn btn-sucess" type="submit" name="frmSubmit" value="Cadastrar"/>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>

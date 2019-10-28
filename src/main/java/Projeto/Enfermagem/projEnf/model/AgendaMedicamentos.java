@@ -19,6 +19,7 @@ public class AgendaMedicamentos {
     private LocalTime pacmedhora;
     private LocalTime pacmedhora2;
     private LocalTime pacmedhora3;
+    private boolean pacmeddias;
     private boolean pacmeddom;
     private boolean pacmedseg;
     private boolean pacmedter;
@@ -61,4 +62,6 @@ public class AgendaMedicamentos {
     public void setPacmedsex(boolean pacmedsex) { this.pacmedsex = pacmedsex; }
     public boolean isPacmedsab() { return pacmedsab; }
     public void setPacmedsab(boolean pacmedsab) { this.pacmedsab = pacmedsab; }
+    public boolean isPacmeddias() { return pacmeddias; }
+    public void setPacmeddias(boolean pacmeddias) { this.pacmeddias = pacmeddias; }
 }
