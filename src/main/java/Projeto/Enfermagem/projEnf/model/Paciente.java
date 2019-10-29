@@ -6,7 +6,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -136,40 +135,4 @@ public class Paciente {
     public void setResponsavel(Responsaveis responsavel) { this.responsavel = responsavel; }
     public List<Agenda> getPacagenda() { return pacagenda; }
     public void setPacagenda(List<Agenda> pacagenda) { this.pacagenda = pacagenda; }
-
-    public Paciente(){}
-
-    public Paciente(int pacid, @NotBlank(message = "O campo não pode ser branco!") String pacnome, @NotBlank(message = "O campo não pode ser branco!") String pacsobrenome, String pacrg, @CPF(message = "Informe um CPF valido!") String paccpf, @NotNull(message = "Informe a data de nascimento!") LocalDate pacdtnasc, String pacestcivil, @NotNull(message = "Informe a data de entrada!") LocalDate pacdtentrada, String pacsexo, String pacetnia, @NotBlank(message = "Informe o peso do idoso!") String pacpeso, @NotBlank(message = "Informe a altura do idoso!") String pacalt, Boolean pacstatus, @NotBlank(message = "Informe a origem do idoso!") String pacenc, String pacchegada, String pacchegadadesc, String pacdep, String pacvicio, String pacviciodesc, String pachipertenso, String pacdiabete, String paccirurgia, String paccirurgiadesc, String paculcera, String paculceraest, String paccrisecon, String pacmedicamento, String pacmedicamentodesc, String pacalergiamed, String pacalergiadesc, Religiao religiao) {
-        this.pacid = pacid;
-        this.pacnome = pacnome;
-        this.pacsobrenome = pacsobrenome;
-        this.pacrg = pacrg;
-        this.paccpf = paccpf;
-        this.pacdtnasc = pacdtnasc;
-        this.pacestcivil = pacestcivil;
-        this.pacdtentrada = pacdtentrada;
-        this.pacsexo = pacsexo;
-        this.pacetnia = pacetnia;
-        this.pacpeso = pacpeso;
-        this.pacalt = pacalt;
-        this.pacstatus = pacstatus;
-        this.pacenc = pacenc;
-        this.pacchegada = pacchegada;
-        this.pacchegadadesc = pacchegadadesc;
-        this.pacdep = pacdep;
-        this.pacvicio = pacvicio;
-        this.pacviciodesc = pacviciodesc;
-        this.pachipertenso = pachipertenso;
-        this.pacdiabete = pacdiabete;
-        this.paccirurgia = paccirurgia;
-        this.paccirurgiadesc = paccirurgiadesc;
-        this.paculcera = paculcera;
-        this.paculceraest = paculceraest;
-        this.paccrisecon = paccrisecon;
-        this.pacmedicamento = pacmedicamento;
-        this.pacmedicamentodesc = pacmedicamentodesc;
-        this.pacalergiamed = pacalergiamed;
-        this.pacalergiadesc = pacalergiadesc;
-        this.pacreligiao = religiao;
-    }
 }

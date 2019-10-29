@@ -22,6 +22,7 @@ public class Responsaveis {
     private String resendnum;
     private String restelddd;
     private String restelnum1;
+
     public int getResid() { return resid; }
     public void setResid(int resid) { this.resid = resid; }
     public String getRescpf() { return rescpf; }

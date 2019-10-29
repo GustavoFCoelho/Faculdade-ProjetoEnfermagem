@@ -19,7 +19,9 @@ public class RelService {
     //====================================================================================
     // Salvar Religiao
     //====================================================================================
-    public Religiao saverel(Religiao rel){ return reInterface.save(rel); }
+    public void saverel(Religiao rel){
+        reInterface.save(rel);
+    }
 
     //====================================================================================
     // Achar todas as religiões

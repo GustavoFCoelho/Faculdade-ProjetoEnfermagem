@@ -94,45 +94,98 @@
                                 th:if="${pacpront.pacalergiamed} == Sim">Sim</span><span
                                 th:if="${pacpront.pacalergiamed} == Nao">Não</span></div>
                     </div>
-                    <div class="card mt-2">
-                        <div class="card-header bg-primary text-center text-light">Descrições</div>
-                        <div class="card-body">
-                            <div class="row text-center">
-                                <div th:if="${pacpront.pacchegadadesc} != null" class="col border p-2"><span>Descrição da Chegada: </span><span
-                                        th:text="${pacpront.pacchegadadesc}">text</span></div>
-                            </div>
-                            <div class="row text-center mt-2">
-                                <div th:if="${pacpront.pacviciodesc} != null" class="col border p-2">
-                                    <span>Descrição dos Vicios: </span><span
-                                        th:text="${pacpront.pacviciodesc}">text</span>
+                    <div th:if="${pacpront.pacchegadadesc != '' or pacpront.pacviciodesc != '' or pacpront.paccirurgiadesc != '' or pacpront.pacmedicamentodesc != '' or pacpront.pacalergiadesc != ''}">
+                        <div class="card mt-2">
+                            <div class="card-header bg-primary text-center text-light">Descrições</div>
+                            <div class="card-body">
+                                <div class="row text-center">
+                                    <div th:if="${pacpront.pacchegadadesc != ''}" class="col border p-2"><span>Descrição da Chegada: </span><span
+                                            th:text="${pacpront.pacchegadadesc}">text</span></div>
                                 </div>
-                            </div>
-                            <div class="row text-center mt-2">
-                                <div th:if="${pacpront.paccirurgiadesc} != null" class="col border p-2"><span>Descrição das Cirugias: </span><span
-                                        th:text="${pacpront.paccirurgiadesc}">text</span></div>
-                            </div>
-                            <div class="row text-center mt-2">
-                                <div th:if="${pacpront.pacmedicamentodesc} != null" class="col border p-2"><span>Descrição dos Medicamentos: </span><span
-                                        th:text="${pacpront.pacmedicamentodesc}">text</span></div>
-                            </div>
-                            <div class="row text-center mt-2">
-                                <div th:if="${pacpront.pacalergiadesc} != null" class="col border p-2"><span>Descrição das Alergias: </span><span
-                                        th:text="${pacpront.pacalergiadesc}">text</span></div>
+                                <div class="row text-center mt-2">
+                                    <div th:if="${pacpront.pacviciodesc != ''} " class="col border p-2">
+                                        <span>Descrição dos Vicios: </span><span
+                                            th:text="${pacpront.pacviciodesc}">text</span>
+                                    </div>
+                                </div>
+                                <div class="row text-center mt-2">
+                                    <div th:if="${pacpront.paccirurgiadesc != '' }" class="col border p-2"><span>Descrição das Cirugias: </span><span
+                                            th:text="${pacpront.paccirurgiadesc}">text</span></div>
+                                </div>
+                                <div class="row text-center mt-2">
+                                    <div th:if="${pacpront.pacmedicamentodesc != ''}" class="col border p-2"><span>Descrição dos Medicamentos: </span><span
+                                            th:text="${pacpront.pacmedicamentodesc}">text</span></div>
+                                </div>
+                                <div class="row text-center mt-2">
+                                    <div th:if="${pacpront.pacalergiadesc != ''}" class="col border p-2"><span>Descrição das Alergias: </span><span
+                                            th:text="${pacpront.pacalergiadesc}">text</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div th:if="${pacpront.pacreligiao} != null" class="card mt-2">
-                        <div class="card-header bg-primary text-center text-light">Informações da religião do Idoso</div>
+                        <div class="card-header bg-primary text-center text-light">Informações da religião do Idoso
+                        </div>
                         <div class="card-body">
                             <div class="row text-center mt-2">
-                                <div class="col border p-2"><span>Nome da Relgião: </span><span th:text="${pacpront.pacreligiao.relnome}">text</span>
+                                <div class="col border p-2"><span>Nome da Relgião: </span><span
+                                        th:text="${pacpront.pacreligiao.relnome}">text</span>
                                 </div>
-                                <div th:if="${pacpront.pacreligiao.relvertente} != null" class="col border p-2"><span>Vertente: </span><span
+                                <div th:if="${pacpront.pacreligiao.relvertente} != null" class="col border p-2">
+                                    <span>Vertente: </span><span
                                         th:text="${pacpront.pacreligiao.relvertente}">text</span></div>
                             </div>
                             <div class="row text-center mt-2">
                                 <div th:if="${pacpront.pacreligiao.reldesc} != null" class="col border p-2"><span>Descrição da Religião: </span><span
                                         th:text="${pacpront.pacreligiao.reldesc}">text</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${pacpront.responsavel} != null" class="card mt-2">
+                        <div class="card-header bg-primary text-center text-light">Informações do Responsável</div>
+                        <div class="card-body">
+                            <div class="row text-center mt-2">
+                                <div class="col border p-2"><span>Nome: </span><span
+                                        th:text="${pacpront.responsavel.resnome}">text</span> <span
+                                        th:text="${pacpront.responsavel.ressobrenome}">text</span>
+                                </div>
+                                <div class="col border p-2"><span>Data de Nascimento: </span><span
+                                        th:text="${#temporals.format(pacpront.responsavel.resdtnasc, 'dd/MM/yyyy')}">text</span>
+                                </div>
+                                <div class="col border p-2">
+                                    <span>Telefone/Celular: </span>(<span
+                                        th:text="${pacpront.responsavel.restelddd}">text</span>) </span>
+                                    <span th:text="${pacpront.responsavel.restelnum1}">text</span>
+                                </div>
+                            </div>
+                            <div class="row text-center mt-2">
+                                <div class="col border p-2"><span>UF: </span><span
+                                        th:text="${pacpront.responsavel.resestado}">text</span>
+                                </div>
+                                <div class="col border p-2"><span>Cidade: </span><span
+                                        th:text="${pacpront.responsavel.rescidade}">text</span>
+                                </div>
+                                <div class="col border p-2"><span>Rua: </span><span
+                                        th:text="${pacpront.responsavel.resendrua}">text</span>
+                                </div>
+                                <div class="col border p-2"><span>Número: </span><span
+                                        th:text="${pacpront.responsavel.resendnum}">text</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div th:if="${!pacpront.anotacoes.isEmpty()}" class="card mt-2">
+                        <div class="card-header bg-primary text-center text-light">Anotações</div>
+                        <div class="card-body">
+                            <div th:each="anotacoes : ${pacpront.anotacoes}">
+                                <div class="row text-center mt-2">
+                                    <div class="col-2 border p-2"><span>Data da Anotação: </span><span
+                                            th:text="${#temporals.format(anotacoes.anodt, 'dd/MM/yyyy')}">text</span>
+                                    </div>
+                                    <div class="col-10 border p-2">
+                                        <span>Mensagem: </span><span
+                                            th:text="${anotacoes.anocamp}">text</span></div>
+                                </div>
                             </div>
                         </div>
                     </div>
