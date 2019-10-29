@@ -6,7 +6,7 @@
                 <!-- Cria uma linha -->
                 <div class="col-12">
                     <!-- Espaçamento de colunas -->
-                    <h1 class="text-center">Cadastro de Anotação</h1>
+                    <h1 class="text-center">Agendar Medicação</h1>
                 </div>
             </div>
         </div>
@@ -26,7 +26,8 @@
                 <div class="col-6">
                     <p>Selecione o Medicamento:</p>
                     <select th:field="*{pacmedmedid}" class="form-control" name="medicamento">
-                        <option th:each=" med : ${medicamentos}" th:value="${med.medid}" th:text="${med.mednome}"></option>
+                        <option th:each=" med : ${medicamentos}" th:value="${med.medid}"
+                                th:text="${med.mednome}"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('pacmedmedid')}" class="alert alert-danger" role="alert">
                         <span th:errors="*{pacmedmedid}"></span>
@@ -36,7 +37,8 @@
             <div class="form-row">
                 <div class="col-4">
                     <label>Dosagem do medicamento:</label>
-                    <input th:field="*{pacmeddosagem}" class="form-control" type="text" name="pacmedDosagem" placeholder="Ex: 15mg" value=""/>
+                    <input th:field="*{pacmeddosagem}" class="form-control" type="text" name="pacmedDosagem"
+                           placeholder="Ex: 15mg" value=""/>
                     <div th:if="${#fields.hasErrors('pacmeddosagem')}" class="alert alert-danger" role="alert">
                         <span th:errors="*{pacmeddosagem}"></span>
                     </div>
@@ -73,8 +75,8 @@
             </div>
             <div class="form-row">
                 <div class="col">
-                    <input class="btn btn-dark" type="button" value="Adicionar um horario"/>
-                    <input class="btn btn-dark" type="button" value="Adicionar um horario"/>
+                    <input class="btn btn-dark mt-1" id="btnLibera1" type="button" value="Adicionar um horario"/>
+                    <input class="btn btn-dark mt-1" id="btnLibera2" type="button" value="Adicionar um horario"/>
                 </div>
             </div>
             <div class="form-row">
@@ -82,10 +84,12 @@
                     <label>O Paciente tem algum dia especifico para tomar a medicação?</label>
                 </div>
                 <div class="col-1">
-                    <input type="radio" class="form-check-input" th:field="*{pacmeddias}" th:value="TRUE"/><label class="form-check-label">Sim</label>
+                    <input type="radio" class="form-check-input" onclick="liberadia(true)" th:field="*{pacmeddias}" th:value="TRUE"/><label
+                        class="form-check-label">Sim</label>
                 </div>
                 <div class="col-1">
-                    <input type="radio" class="form-check-input" th:field="*{pacmeddias}" th:value="FALSE"/><label class="form-check-label">Não</label>
+                    <input type="radio" class="form-check-input" onclick="liberadia(false)" selected th:field="*{pacmeddias}" th:value="FALSE"/><label
+                        class="form-check-label">Não</label>
                 </div>
             </div>
             <div id="DiasSemana" class="form-row">
@@ -104,22 +108,22 @@
                     </select>
                 </div>
                 <div class="col">
-                    <label for="">Terça:</label>
-                    <select th:field="*{pacmedter}" name="terMed" class="form-control">
+                    <label for="terMed">Terça:</label>
+                    <select th:field="*{pacmedter}" id="terMed" class="form-control">
                         <option th:value="FALSE">Não</option>
                         <option th:value="TRUE">Sim</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label for="">Quarta:</label>
-                    <select th:field="*{pacmedqua}" name="quaMed" class="form-control">
+                    <label for="quaMed">Quarta:</label>
+                    <select th:field="*{pacmedqua}" id="quaMed" class="form-control">
                         <option th:value="FALSE">Não</option>
                         <option th:value="TRUE">Sim</option>
                     </select>
                 </div>
                 <div class="col">
-                    <label for="">Quinta:</label>
-                    <select th:field="*{pacmedqui}" name="quiMed" class="form-control">
+                    <label for="quiMed">Quinta:</label>
+                    <select th:field="*{pacmedqui}" id="quiMed" class="form-control">
                         <option th:value="FALSE">Não</option>
                         <option th:value="TRUE">Sim</option>
                     </select>
@@ -142,7 +146,7 @@
             <hr>
             <div class="form-row text-center">
                 <div class="col-12">
-                    <input class="btn btn-sucess" type="submit" name="frmSubmit" value="Cadastrar"/>
+                    <input class="btn btn-success" type="submit" name="frmSubmit" value="Cadastrar"/>
                 </div>
             </div>
         </form>
