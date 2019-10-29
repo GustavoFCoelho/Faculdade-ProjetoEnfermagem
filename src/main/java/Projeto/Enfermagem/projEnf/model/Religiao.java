@@ -24,6 +24,13 @@ public class Religiao {
     public Religiao() {
     }
 
+    public Religiao(int relid, @NotBlank(message = "Informe o nome da religião!") String relnome, String relvertente, @NotBlank(message = "Descreva as caracteristicas da religião") String reldesc) {
+        this.relid = relid;
+        this.relnome = relnome;
+        this.relvertente = relvertente;
+        this.reldesc = reldesc;
+    }
+
     //====================================================================================
     // Getters e Setters
     //====================================================================================

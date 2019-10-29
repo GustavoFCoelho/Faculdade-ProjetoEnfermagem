@@ -139,7 +139,7 @@ public class Paciente {
 
     public Paciente(){}
 
-    public Paciente(int pacid, @NotBlank(message = "O campo não pode ser branco!") String pacnome, @NotBlank(message = "O campo não pode ser branco!") String pacsobrenome, String pacrg, @CPF(message = "Informe um CPF valido!") String paccpf, @NotNull(message = "Informe a data de nascimento!") LocalDate pacdtnasc, String pacestcivil, @NotNull(message = "Informe a data de entrada!") LocalDate pacdtentrada, String pacsexo, String pacetnia, @NotBlank(message = "Informe o peso do idoso!") String pacpeso, @NotBlank(message = "Informe a altura do idoso!") String pacalt, Boolean pacstatus, @NotBlank(message = "Informe a origem do idoso!") String pacenc, String pacchegada, String pacchegadadesc, String pacdep, String pacvicio, String pacviciodesc, String pachipertenso, String pacdiabete, String paccirurgia, String paccirurgiadesc, String paculcera, String paculceraest, String paccrisecon, String pacmedicamento, String pacmedicamentodesc, String pacalergiamed, String pacalergiadesc) {
+    public Paciente(int pacid, @NotBlank(message = "O campo não pode ser branco!") String pacnome, @NotBlank(message = "O campo não pode ser branco!") String pacsobrenome, String pacrg, @CPF(message = "Informe um CPF valido!") String paccpf, @NotNull(message = "Informe a data de nascimento!") LocalDate pacdtnasc, String pacestcivil, @NotNull(message = "Informe a data de entrada!") LocalDate pacdtentrada, String pacsexo, String pacetnia, @NotBlank(message = "Informe o peso do idoso!") String pacpeso, @NotBlank(message = "Informe a altura do idoso!") String pacalt, Boolean pacstatus, @NotBlank(message = "Informe a origem do idoso!") String pacenc, String pacchegada, String pacchegadadesc, String pacdep, String pacvicio, String pacviciodesc, String pachipertenso, String pacdiabete, String paccirurgia, String paccirurgiadesc, String paculcera, String paculceraest, String paccrisecon, String pacmedicamento, String pacmedicamentodesc, String pacalergiamed, String pacalergiadesc, Religiao religiao) {
         this.pacid = pacid;
         this.pacnome = pacnome;
         this.pacsobrenome = pacsobrenome;
@@ -170,5 +170,6 @@ public class Paciente {
         this.pacmedicamentodesc = pacmedicamentodesc;
         this.pacalergiamed = pacalergiamed;
         this.pacalergiadesc = pacalergiadesc;
+        this.pacreligiao = religiao;
     }
 }

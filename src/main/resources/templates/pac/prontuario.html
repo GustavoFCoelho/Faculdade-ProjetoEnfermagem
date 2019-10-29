@@ -94,35 +94,51 @@
                                 th:if="${pacpront.pacalergiamed} == Sim">Sim</span><span
                                 th:if="${pacpront.pacalergiamed} == Nao">Não</span></div>
                     </div>
-                </div>
-            </div>
-            <div class="card mt-2">
-                <div class="card-header bg-primary text-center text-light">Descrições</div>
-                <div class="card-body">
-                    <div class="row text-center">
-                        <div th:if="${pacpront.pacchegadadesc} != null" class="col border p-2"><span>Descrição da Chegada: </span><span
-                                th:text="${pacpront.pacchegadadesc}">text</span></div>
-                    </div>
-                    <div class="row text-center mt-2">
-                        <div th:if="${pacpront.pacviciodesc} != null" class="col border p-2">
-                            <span>Descrição dos Vicios: </span><span th:text="${pacpront.pacviciodesc}">text</span>
+                    <div class="card mt-2">
+                        <div class="card-header bg-primary text-center text-light">Descrições</div>
+                        <div class="card-body">
+                            <div class="row text-center">
+                                <div th:if="${pacpront.pacchegadadesc} != null" class="col border p-2"><span>Descrição da Chegada: </span><span
+                                        th:text="${pacpront.pacchegadadesc}">text</span></div>
+                            </div>
+                            <div class="row text-center mt-2">
+                                <div th:if="${pacpront.pacviciodesc} != null" class="col border p-2">
+                                    <span>Descrição dos Vicios: </span><span
+                                        th:text="${pacpront.pacviciodesc}">text</span>
+                                </div>
+                            </div>
+                            <div class="row text-center mt-2">
+                                <div th:if="${pacpront.paccirurgiadesc} != null" class="col border p-2"><span>Descrição das Cirugias: </span><span
+                                        th:text="${pacpront.paccirurgiadesc}">text</span></div>
+                            </div>
+                            <div class="row text-center mt-2">
+                                <div th:if="${pacpront.pacmedicamentodesc} != null" class="col border p-2"><span>Descrição dos Medicamentos: </span><span
+                                        th:text="${pacpront.pacmedicamentodesc}">text</span></div>
+                            </div>
+                            <div class="row text-center mt-2">
+                                <div th:if="${pacpront.pacalergiadesc} != null" class="col border p-2"><span>Descrição das Alergias: </span><span
+                                        th:text="${pacpront.pacalergiadesc}">text</span></div>
+                            </div>
                         </div>
                     </div>
-                    <div class="row text-center mt-2">
-                        <div th:if="${pacpront.paccirurgiadesc} != null" class="col border p-2"><span>Descrição das Cirugias: </span><span
-                                th:text="${pacpront.paccirurgiadesc}">text</span></div>
-                    </div>
-                    <div class="row text-center mt-2">
-                        <div th:if="${pacpront.pacmedicamentodesc} != null" class="col border p-2"><span>Descrição dos Medicamentos: </span><span
-                                th:text="${pacpront.pacmedicamentodesc}">text</span></div>
-                    </div>
-                    <div class="row text-center mt-2">
-                        <div th:if="${pacpront.pacalergiadesc} != null" class="col border p-2"><span>Descrição das Alergias: </span><span
-                                th:text="${pacpront.pacalergiadesc}">text</span></div>
+                    <div th:if="${pacpront.pacreligiao} != null" class="card mt-2">
+                        <div class="card-header bg-primary text-center text-light">Informações da religião do Idoso</div>
+                        <div class="card-body">
+                            <div class="row text-center mt-2">
+                                <div class="col border p-2"><span>Nome da Relgião: </span><span th:text="${pacpront.pacreligiao.relnome}">text</span>
+                                </div>
+                                <div th:if="${pacpront.pacreligiao.relvertente} != null" class="col border p-2"><span>Vertente: </span><span
+                                        th:text="${pacpront.pacreligiao.relvertente}">text</span></div>
+                            </div>
+                            <div class="row text-center mt-2">
+                                <div th:if="${pacpront.pacreligiao.reldesc} != null" class="col border p-2"><span>Descrição da Religião: </span><span
+                                        th:text="${pacpront.pacreligiao.reldesc}">text</span></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
             </div>
+
         </div>
     </div>
 </div>
