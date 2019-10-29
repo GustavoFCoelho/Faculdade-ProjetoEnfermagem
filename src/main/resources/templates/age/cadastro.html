@@ -19,32 +19,50 @@
                     <select class="form-control" th:field="*{anopacid}">
                         <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('anopacid')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{anopacid}" ></span>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label>Digite o Compromisso:</label>
                     <input class="form-control" type="text" th:field="*{agecamp}" placeholder="Digite o compromisso">
+                    <div th:if="${#fields.hasErrors('agecamp')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{agecamp}" ></span>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label>Informe a Data:</label>
                     <input class="form-control" type="date" th:field="*{agedt}">
+                    <div th:if="${#fields.hasErrors('agedt')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{agedt}" ></span>
+                    </div>
                 </div>
                 <div class="col">
                     <label>Informe o horario</label>
                     <input class="form-control" type="time" th:field="*{agehora}">
+                    <div th:if="${#fields.hasErrors('agehora')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{agehora}" ></span>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label>Digite o Endereço</label>
                     <input class="form-control" type="text" th:field="*{agerua}" placeholder="Digite o endereço">
+                    <div th:if="${#fields.hasErrors('agerua')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{agerua}" ></span>
+                    </div>
                 </div>
                 <div class="col">
                     <label>Digite o Número</label>
                     <input class="form-control" type="text" th:field="*{ageruanum}" placeholder="Digite o número">
+                    <div th:if="${#fields.hasErrors('ageruanum')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{ageruanum}" ></span>
+                    </div>
                 </div>
             </div><hr />
             <div class="form-row text-center">

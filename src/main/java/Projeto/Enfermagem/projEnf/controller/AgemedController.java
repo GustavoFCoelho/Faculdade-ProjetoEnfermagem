@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/agemed")
 public class AgemedController {
@@ -20,19 +22,20 @@ public class AgemedController {
     @GetMapping
     public ModelAndView index(ModelMap map){
         map.addAttribute("conteudo", "agemed/cadastro");
-        map.addAttribute("agemed", new AgendaMedicamentos());
+        map.addAttribute("agendaMedicamentos", new AgendaMedicamentos());
         map.addAttribute("pacientes", agemedService.getPacService().callPacs());
         map.addAttribute("medicamentos", agemedService.getMedicamentoService().callMeds());
         return new ModelAndView("layout", map);
     }
 
     @PostMapping("/save")
-    public ModelAndView save(AgendaMedicamentos medicamentos, BindingResult result){
+    public ModelAndView save(@Valid AgendaMedicamentos agendaMedicamentos, BindingResult result){
         if(result.hasErrors()){
+            System.out.println(result.getObjectName());
             return new ModelAndView("layout","conteudo", "agemed/cadastro");
         }
 
-        agemedService.save(medicamentos);
+        agemedService.save(agendaMedicamentos);
         return new ModelAndView("redirect:/agemed");
     }
 }

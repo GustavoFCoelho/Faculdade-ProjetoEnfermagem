@@ -29,17 +29,16 @@ public class PacController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid Paciente paciente, BindingResult result){
+    public ModelAndView save(@Valid Paciente pac, BindingResult result){
         if(result.hasErrors()){
             return new ModelAndView("layout", "conteudo", "/pac/cadastro");
         }
-        pacService.savePac(paciente);
+        pacService.savePac(pac);
         return new ModelAndView("redirect:/pac");
     }
 
     @GetMapping("/prontuario")
     public ModelAndView prontuário(ModelMap map){
-        pacService.insertPac();
         map.addAttribute("pacientes", pacService.callPacs());
         map.addAttribute("conteudo","/pac/prontuario");
         map.addAttribute("paciente", new Paciente());

@@ -1,6 +1,7 @@
 package Projeto.Enfermagem.projEnf.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
@@ -8,8 +9,10 @@ public class Medicamento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int medid;
+    @NotBlank(message = "Informe o nome do medicamento!")
     private String mednome;
     private String medinfo;
+    @NotBlank(message = "Informe a dosagem do medicamento!")
     private String meddosagem;
     @OneToMany(mappedBy = "pacmedmedid")
     private List<AgendaMedicamentos> agendaMedicamentos;

@@ -12,7 +12,7 @@
         </div>
     </div>
     <div class="container">
-        <form th:action="@{/ano/save}" th:object="${anotacao}" method="post">
+        <form th:action="@{/ano/save}" th:object="${anotacoes}" method="post">
             <input type="hidden" th:field="*{anoid}" />
             <div class="form-row">
                 <div class="col-6">
@@ -20,17 +20,26 @@
                     <select th:field="*{anopacid}" class="form-control">
                         <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('anopacid')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{anopacid}"></span>
+                    </div>
                 </div>
 
                 <div class="col-6">
                     <label>Data da anotação</label>
                     <input class="form-control" type="date" th:field="*{anodt}">
+                    <div th:if="${#fields.hasErrors('anodt')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{anodt}"></span>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-12">
                     <label>Descrição da anotação</label>
                     <textarea class="form-control" th:field="*{anocamp}"></textarea>
+                    <div th:if="${#fields.hasErrors('anocamp')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{anocamp}"></span>
+                    </div>
                 </div>
             </div>
             <hr>

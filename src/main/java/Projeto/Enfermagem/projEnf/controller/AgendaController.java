@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/")
 public class AgendaController {
@@ -26,7 +28,7 @@ public class AgendaController {
     }
 
     @PostMapping("age/save")
-    public ModelAndView save(Agenda agenda, BindingResult result){
+    public ModelAndView save(@Valid Agenda agenda, BindingResult result){
         if(result.hasErrors()){
             return new ModelAndView("layout","conteudo","/age/cadastro");
         }

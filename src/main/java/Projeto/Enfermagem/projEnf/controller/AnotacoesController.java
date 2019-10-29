@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/ano")
 public class AnotacoesController {
@@ -20,18 +22,18 @@ public class AnotacoesController {
     @GetMapping
     public ModelAndView index(ModelMap modelMap){
         modelMap.addAttribute("pacientes", anotacoesService.getPacService().callPacs());
-        modelMap.addAttribute("anotacao", new Anotacoes());
+        modelMap.addAttribute("anotacoes", new Anotacoes());
         modelMap.addAttribute("conteudo","/ano/cadastro");
         return new ModelAndView("layout", modelMap);
     }
 
     @PostMapping("/save")
-    public ModelAndView save(Anotacoes anotacao, BindingResult result){
+    public ModelAndView save(@Valid Anotacoes anotacoes, BindingResult result){
         if(result.hasErrors()){
             return new ModelAndView("layout", "conteudo", "/ano/cadastro");
         }
 
-        anotacoesService.save(anotacao);
+        anotacoesService.save(anotacoes);
         return new ModelAndView("redirect:/ano");
     }
 }

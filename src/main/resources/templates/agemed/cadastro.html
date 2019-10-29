@@ -12,29 +12,41 @@
         </div>
     </div>
     <div class="container">
-        <form th:action="@{/agemed/save}" th:object="${agemed}" method="post">
+        <form th:action="@{/agemed/save}" th:object="${agendaMedicamentos}" method="post">
             <div class="form-row">
                 <div class="col-6">
                     <p>Selecione o paciente:</p>
                     <select th:field="*{pacmedpacid}" class="form-control" name="paciente">
                         <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('pacmedpacid')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{pacmedpacid}"></span>
+                    </div>
                 </div>
                 <div class="col-6">
                     <p>Selecione o Medicamento:</p>
                     <select th:field="*{pacmedmedid}" class="form-control" name="medicamento">
                         <option th:each=" med : ${medicamentos}" th:value="${med.medid}" th:text="${med.mednome}"></option>
                     </select>
+                    <div th:if="${#fields.hasErrors('pacmedmedid')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{pacmedmedid}"></span>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-4">
                     <label>Dosagem do medicamento:</label>
                     <input th:field="*{pacmeddosagem}" class="form-control" type="text" name="pacmedDosagem" placeholder="Ex: 15mg" value=""/>
+                    <div th:if="${#fields.hasErrors('pacmeddosagem')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{pacmeddosagem}"></span>
+                    </div>
                 </div>
                 <div class="col-4">
                     <label>Inicio da medicação dia:</label>
                     <input th:field="*{pacmedinicio}" class="form-control" type="date" name="pacmedDatin" value=""/>
+                    <div th:if="${#fields.hasErrors('pacmedinicio')}" class="alert alert-danger" role="alert">
+                        <span th:errors="*{pacmedinicio}"></span>
+                    </div>
                 </div>
                 <div class="col-4">
                     <label>Fim da medicação dia:</label>

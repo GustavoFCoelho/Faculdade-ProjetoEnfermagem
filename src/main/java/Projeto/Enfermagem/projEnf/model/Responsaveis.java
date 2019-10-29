@@ -1,26 +1,34 @@
 package Projeto.Enfermagem.projEnf.model;
 
+import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 @Entity
 public class Responsaveis {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int resid;
+    @CPF(message = "Digite um CPF válido!")
     private String rescpf;
     @OneToOne
+    @NotNull(message = "É preciso linkar um paciente!")
     private Paciente respacid;
+    @NotBlank(message = "Informe o nome do responsável")
     private String resnome;
+    @NotBlank(message = "Informe o sobrenome do responsável")
     private String ressobrenome;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd") @NotNull(message = "Informe a data de nascimento do responsável")
     private LocalDate resdtnasc;
     private String resestado;
     private String rescidade;
     private String resendrua;
     private String resendnum;
     private String restelddd;
+    @NotBlank(message = "Informe um contato para o responsável")
     private String restelnum1;
 
     public int getResid() { return resid; }

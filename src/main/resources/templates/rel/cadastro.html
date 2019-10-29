@@ -13,22 +13,22 @@
     </div>
     <div class="container">
         <form th:action="@{/rel/save}" th:object="${religiao}" method="post">
-            <input type="hidden" th:field="*{relid}" />
+            <input type="hidden" th:field="*{relid}"/>
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-6">
                         <label for="relnome">Nome da Religião:</label>
                         <input type="text" class="form-control" th:field="*{relnome}" placeholder="Cristão"/>
                         <div th:if="${#fields.hasErrors('relnome')}" class="alert alert-danger" role="alert">
-                            <span th:errors="*{relnome}" ></span>
-                        </div> 
+                            <span th:errors="*{relnome}"></span>
+                        </div>
                     </div>
                     <div class="col-6">
                         <label for="relvertente">Vertente da Religião</label>
                         <input type="text" class="form-control" th:field="*{relvertente}" placeholder="Católica"/>
                         <div th:if="${#fields.hasErrors('relvertente')}" class="alert alert-danger" role="alert">
-                            <span th:errors="*{relvertente}" ></span>
-                        </div> 
+                            <span th:errors="*{relvertente}"></span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -36,10 +36,11 @@
                 <div class="form-row">
                     <div class="col-12">
                         <div th:if="${#fields.hasErrors('reldesc')}" class="alert alert-danger" role="alert">
-                            <span th:errors="*{reldesc}" ></span>
-                        </div> 
+                            <span th:errors="*{reldesc}"></span>
+                        </div>
                         <label for="reldesc">Descrição da Religião:</label>
-                        <textarea class="form-control" th:field="*{reldesc}" rows="10" placeholder="- A religião tem impedimentos como não permite o consumo de carne"></textarea>
+                        <textarea class="form-control" th:field="*{reldesc}" rows="10"
+                                  placeholder="- A religião tem impedimentos como não permite o consumo de carne"></textarea>
                     </div>
                 </div>
             </div>

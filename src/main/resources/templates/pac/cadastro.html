@@ -14,6 +14,7 @@
     <div class="container">
 
         <form th:action="@{/pac/save}" id="formPac" method="post" th:object="${paciente}">
+            <input type="hidden" th:field="*{pacid}">
             <div class="row text-center">
                 <h1 style="width: 50px" class="border" onclick="reveal('parte1','parte2','parte3')">1</h1>
                 <h1 style="width: 50px" class="border" onclick="reveal('parte2','parte1','parte3')">2</h1>

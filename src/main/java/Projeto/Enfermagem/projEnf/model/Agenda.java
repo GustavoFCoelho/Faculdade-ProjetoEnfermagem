@@ -3,6 +3,8 @@ package Projeto.Enfermagem.projEnf.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 @Entity
@@ -11,13 +13,17 @@ public class Agenda {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ageid;
     @ManyToOne
+    @NotNull(message = "É preciso informar o idoso!")
     private Paciente anopacid;
+    @NotBlank(message = "É preciso informar qual é o compromisso")
     private String agecamp;
-    @DateTimeFormat(pattern="yyyy-MM-dd")
+    @DateTimeFormat(pattern="yyyy-MM-dd") @NotNull(message = "Informe a data do compromisso!")
     private LocalDate agedt;
-    @DateTimeFormat(pattern = "HH:mm")
+    @DateTimeFormat(pattern = "HH:mm") @NotNull(message = "Informe o horario do compromisso!")
     private LocalTime agehora;
+    @NotBlank(message = "Informe o local do compromisso!")
     private String agerua;
+    @NotBlank(message = "Informe o local do compromisso")
     private String ageruanum;
     private boolean agestatus;
 

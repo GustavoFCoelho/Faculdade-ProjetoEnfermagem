@@ -1,6 +1,8 @@
 package Projeto.Enfermagem.projEnf.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 @Entity
@@ -8,12 +10,14 @@ public class AgendaMedicamentos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int pacmedid;
-    @ManyToOne
+    @ManyToOne @NotNull(message = "Informe o idoso que deve tomar o remédio!")
     private Paciente pacmedpacid;
-    @ManyToOne
+    @ManyToOne @NotNull(message = "Informe o remédio que o idoso deve tomar!")
     private Medicamento pacmedmedid;
     private String pacmedinfo;
+    @NotBlank(message = "Informe a dosagem que o idoso deve tomar!")
     private String pacmeddosagem;
+    @NotNull(message = "Informe a data de inicio da medicação!")
     private LocalDate pacmedinicio;
     private LocalDate pacmedfim;
     private LocalTime pacmedhora;
