@@ -1,0 +1,129 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Anotação</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form th:action="@{/pac/callPront}" th:object="${paciente}" method="get">
+            <div class="form-row">
+                <div class="col">
+                    <label>Idoso:</label>
+                    <select th:field="*{pacid}" class="form-control">
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    </select>
+                    <div class="text-center">
+                        <input type="submit" class="mt-5 btn btn-dark" value="Gerar Prontuário">
+                    </div>
+                </div>
+            </div>
+        </form>
+        <hr>
+        <div th:if="${pacpront}!= null">
+            <div class="card rounded">
+                <div class="card-header bg-primary text-light text-center">Prontuario</div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col border p-2"><span>Nome: </span><span th:text="${pacpront.pacnome}">texto</span>
+                            <span th:text="${pacpront.pacsobrenome}">texto</span></div>
+                        <div class="col border p-2"><span>Data de nascimento: </span><span
+                                th:text="${#temporals.format(pacpront.pacdtnasc, 'dd/MM/yyyy')}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>CPF: </span><span th:text="${pacpront.paccpf}">text</span>
+                        </div>
+                        <div class="col border p-2"><span>RG: </span><span th:text="${pacpront.pacrg}">text</span></div>
+                        <div class="col border p-2"><span>Estado Civil: </span><span th:text="${pacpront.pacestcivil}">text</span>
+                        </div>
+                        <div class="col border p-2"><span>Data de Entrada: </span><span
+                                th:text="${#temporals.format(pacpront.pacdtentrada, 'dd/MM/yyyy')}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Sexo: </span><span th:text="${pacpront.pacsexo}">text</span>
+                        </div>
+                        <div class="col border p-2"><span>Peso: </span><span th:text="${pacpront.pacpeso}">text</span>
+                        </div>
+                        <div class="col border p-2"><span>Altura: </span><span th:text="${pacpront.pacalt}">text</span>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Etnia: </span><span th:text="${pacpront.pacetnia}">text</span>
+                        </div>
+                        <div class="col border p-2"><span>Encaminhamento: </span><span
+                                th:text="${pacpront.pacenc}">text</span></div>
+                        <div class="col border p-2"><span>Condição de Chegada: </span><span
+                                th:text="${pacpront.pacchegada}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Grau de Dependência: </span><span
+                                th:text="${pacpront.pacdep}">text</span></div>
+                        <div class="col border p-2"><span>Possui Vicio: </span><span
+                                th:if="${pacpront.pacvicio} == Sim">Sim</span><span th:if="${pacpront.pacvicio} == Nao">Não</span>
+                        </div>
+                        <div class="col border p-2"><span>Hipertenso: </span><span
+                                th:if="${pacpront.pachipertenso} == Sim">Sim</span><span
+                                th:if="${pacpront.pachipertenso} == Nao">Não</span></div>
+                        <div class="col border p-2"><span>Diabético: </span><span th:if="${pacpront.pacdiabete} == Sim">Sim</span><span
+                                th:if="${pacpront.pacdiabete} == Nao">Não</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Fez Cirurgia: </span><span
+                                th:if="${pacpront.paccirurgia} == Sim">Sim</span><span
+                                th:if="${pacpront.paccirurgia} == Nao">Não</span></div>
+                        <div class="col border p-2"><span>Possui Ulcera: </span><span
+                                th:if="${pacpront.paculcera} == Sim">Sim</span><span
+                                th:if="${pacpront.paculcera} == Nao">Não</span></div>
+                        <div th:if="${pacpront.paculcera} == Sim" class="col border p-2">
+                            <span>Estágio da Ulcera: </span><span th:text="${pacpront.paculceraest}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Possui Crise Convulsiva: </span><span
+                                th:if="${pacpront.paccrisecon} == Sim">Sim</span><span
+                                th:if="${pacpront.paccrisecon} == Nao">Não</span></div>
+                        <div class="col border p-2"><span>Faz uso de medicamentos: </span><span
+                                th:if="${pacpront.pacmedicamento} == Sim">Sim</span><span
+                                th:if="${pacpront.pacmedicamento} == Nao">Não</span></div>
+                        <div class="col border p-2"><span>Alergico a algum medicamento: </span><span
+                                th:if="${pacpront.pacalergiamed} == Sim">Sim</span><span
+                                th:if="${pacpront.pacalergiamed} == Nao">Não</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-2">
+                <div class="card-header bg-primary text-center text-light">Descrições</div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div th:if="${pacpront.pacchegadadesc} != null" class="col border p-2"><span>Descrição da Chegada: </span><span
+                                th:text="${pacpront.pacchegadadesc}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div th:if="${pacpront.pacviciodesc} != null" class="col border p-2">
+                            <span>Descrição dos Vicios: </span><span th:text="${pacpront.pacviciodesc}">text</span>
+                        </div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div th:if="${pacpront.paccirurgiadesc} != null" class="col border p-2"><span>Descrição das Cirugias: </span><span
+                                th:text="${pacpront.paccirurgiadesc}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div th:if="${pacpront.pacmedicamentodesc} != null" class="col border p-2"><span>Descrição dos Medicamentos: </span><span
+                                th:text="${pacpront.pacmedicamentodesc}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div th:if="${pacpront.pacalergiadesc} != null" class="col border p-2"><span>Descrição das Alergias: </span><span
+                                th:text="${pacpront.pacalergiadesc}">text</span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+</html>

@@ -36,4 +36,22 @@ public class PacController {
         pacService.savePac(paciente);
         return new ModelAndView("redirect:/pac");
     }
+
+    @GetMapping("/prontuario")
+    public ModelAndView prontuário(ModelMap map){
+        pacService.insertPac();
+        map.addAttribute("pacientes", pacService.callPacs());
+        map.addAttribute("conteudo","/pac/prontuario");
+        map.addAttribute("paciente", new Paciente());
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/callPront")
+    public ModelAndView callPront(Paciente pac, ModelMap map){
+        map.addAttribute("pacpront", pacService.findByID(pac.getPacid()));
+        map.addAttribute("pacientes", pacService.callPacs());
+        map.addAttribute("conteudo","/pac/prontuario");
+        map.addAttribute("paciente", new Paciente());
+        return new ModelAndView("layout", map);
+    }
 }
