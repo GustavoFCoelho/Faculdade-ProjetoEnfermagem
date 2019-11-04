@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +19,13 @@ import javax.validation.Valid;
 public class AgendaController {
     @Autowired
     private AgendaService agendaService;
+
+    @GetMapping
+    public ModelAndView home(ModelMap map){
+        map.addAttribute("conteudo", "/age/agenda");
+        map.addAttribute("agenda", agendaService.chamaAgenda());
+        return new ModelAndView("layout", map);
+    }
 
     @GetMapping("age")
     public ModelAndView index(ModelMap modelMap){
@@ -34,8 +42,16 @@ public class AgendaController {
             modelMap.addAttribute("pacientes", agendaService.getPacService().callPacs());
             return new ModelAndView("layout",modelMap);
         }
-
+        System.out.println(agenda.getAgeid());
         agendaService.save(agenda);
         return new ModelAndView("redirect:/age");
+    }
+
+    @GetMapping("age/alteraagenda/{id}")
+    public ModelAndView altera(@PathVariable int id, ModelMap map){
+        map.addAttribute("conteudo","/age/cadastro");
+        map.addAttribute("agenda", agendaService.findbyid(id));
+        map.addAttribute("pacientes", agendaService.getPacService().callPacs());
+        return new ModelAndView("/layout", map);
     }
 }

@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Anotação</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-light">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Idoso</th>
+                    <th>Compromisso</th>
+                    <th>Endereço</th>
+                    <th>Horário</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="age : ${agenda}">
+                    <th><span th:text="${age.anopacid.pacnome}"></span> <span th:text="${age.anopacid.pacsobrenome}"></span></th>
+                    <th><span th:text="${age.agecamp}"></span></th>
+                    <th><span th:text="${#temporals.format(age.agedt, 'dd/MM/yyyy')}"></span></th>
+                    <th><span th:text="${age.agehora}"></span></th>
+                    <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.anopacid.pacid}">Alterar</a></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>

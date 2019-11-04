@@ -31,7 +31,7 @@ public class PacService {
     }
 
     public List<Paciente> callPacs() {
-        return pacInterface.findAll();
+        return pacInterface.findAllByPacstatus(true);
     }
 
     public Paciente findByID(int pacid) {

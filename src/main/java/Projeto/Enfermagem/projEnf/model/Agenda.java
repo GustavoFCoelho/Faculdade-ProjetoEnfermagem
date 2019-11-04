@@ -25,7 +25,11 @@ public class Agenda {
     private String agerua;
     @NotBlank(message = "Informe o local do compromisso")
     private String ageruanum;
-    private boolean agestatus;
+    private boolean agestatus = true;
+
+    public Agenda(){
+        anopacid = new Paciente();
+    }
 
     public int getAgeid() { return ageid; }
     public void setAgeid(int ageid) { this.ageid = ageid; }
