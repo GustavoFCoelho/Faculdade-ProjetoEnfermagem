@@ -28,9 +28,11 @@ public class AgendaController {
     }
 
     @PostMapping("age/save")
-    public ModelAndView save(@Valid Agenda agenda, BindingResult result){
+    public ModelAndView save(@Valid Agenda agenda, BindingResult result, ModelMap modelMap){
         if(result.hasErrors()){
-            return new ModelAndView("layout","conteudo","/age/cadastro");
+            modelMap.addAttribute("conteudo","/age/cadastro");
+            modelMap.addAttribute("pacientes", agendaService.getPacService().callPacs());
+            return new ModelAndView("layout",modelMap);
         }
 
         agendaService.save(agenda);

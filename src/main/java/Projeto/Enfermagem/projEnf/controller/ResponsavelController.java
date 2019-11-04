@@ -28,11 +28,11 @@ public class ResponsavelController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid Responsaveis responsaveis, BindingResult result){
+    public ModelAndView save(@Valid Responsaveis responsaveis, BindingResult result, ModelMap map){
         if(result.hasErrors()){
-           // System.out.println(result.get);
-            //return null;
-            return new ModelAndView("layout", "conteudo", "/res/cadastro");
+            map.addAttribute("conteudo", "/res/cadastro");
+            map.addAttribute("pacientes", resService.getPacService().callPacs());
+            return new ModelAndView("layout", map);
         }
         resService.save(responsaveis);
         return new ModelAndView("redirect:/resp");

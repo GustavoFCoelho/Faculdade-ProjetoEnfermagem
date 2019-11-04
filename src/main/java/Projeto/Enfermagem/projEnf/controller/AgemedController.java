@@ -29,10 +29,12 @@ public class AgemedController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid AgendaMedicamentos agendaMedicamentos, BindingResult result){
+    public ModelAndView save(@Valid AgendaMedicamentos agendaMedicamentos, BindingResult result, ModelMap map){
         if(result.hasErrors()){
-            System.out.println(result.getObjectName());
-            return new ModelAndView("layout","conteudo", "agemed/cadastro");
+            map.addAttribute("conteudo", "agemed/cadastro");
+            map.addAttribute("pacientes", agemedService.getPacService().callPacs());
+            map.addAttribute("medicamentos", agemedService.getMedicamentoService().callMeds());
+            return new ModelAndView("layout",map);
         }
 
         agemedService.save(agendaMedicamentos);

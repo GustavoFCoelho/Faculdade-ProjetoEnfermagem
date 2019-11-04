@@ -28,9 +28,11 @@ public class AnotacoesController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid Anotacoes anotacoes, BindingResult result){
+    public ModelAndView save(@Valid Anotacoes anotacoes, BindingResult result, ModelMap modelMap){
         if(result.hasErrors()){
-            return new ModelAndView("layout", "conteudo", "/ano/cadastro");
+            modelMap.addAttribute("pacientes", anotacoesService.getPacService().callPacs());
+            modelMap.addAttribute("conteudo","/ano/cadastro");
+            return new ModelAndView("layout", modelMap);
         }
 
         anotacoesService.save(anotacoes);

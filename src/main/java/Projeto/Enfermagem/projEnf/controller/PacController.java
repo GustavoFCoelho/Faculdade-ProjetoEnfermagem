@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -29,9 +30,11 @@ public class PacController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid Paciente pac, BindingResult result){
+    public Object save(@Valid Paciente pac, BindingResult result, ModelMap map){
         if(result.hasErrors()){
-            return new ModelAndView("layout", "conteudo", "/pac/cadastro");
+            map.addAttribute("conteudo", "/pac/cadastro");
+            map.addAttribute("rels", pacService.callRegis());
+            return new ModelAndView("layout", map);
         }
         pacService.savePac(pac);
         return new ModelAndView("redirect:/pac");
