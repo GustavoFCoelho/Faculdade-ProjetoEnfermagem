@@ -9,8 +9,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Arrays;
 
 @SpringBootApplication
 public class ProjEnfApplication implements CommandLineRunner {
@@ -35,7 +37,15 @@ public class ProjEnfApplication implements CommandLineRunner {
 		pac.setPacdtnasc(LocalDate.now());
 		pac.setPacdtentrada(LocalDate.now());
 		pac.setPacenc("Familia");
-		pacInterface.save(pac);
+		Paciente pac2 = new Paciente();
+		pac2.setPacnome("Frederson");
+		pac2.setPacsobrenome("Coelho");
+		pac2.setPacalt("1.80");
+		pac2.setPacpeso("120.00");
+		pac2.setPacdtnasc(LocalDate.now());
+		pac2.setPacdtentrada(LocalDate.now());
+		pac2.setPacenc("Familia");
+		pacInterface.saveAll(Arrays.asList(pac, pac2));
 		Medicamento medicamento = new Medicamento();
 		medicamento.setMedinfo("Clamnate");
 		medicamento.setMednome("Rivotril");

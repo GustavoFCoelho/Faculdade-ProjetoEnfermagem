@@ -18,7 +18,7 @@
                 <div class="col">
                     <label>Selecione o paciente</label>
                     <select class="form-control" th:field="*{anopacid}">
-                        <option th:each=" pac : ${pacientes}" th:selected="(${pac.pacid} == *{anopacid.pacid})" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('anopacid')}" class="alert alert-danger" role="alert">
                         <span th:errors="*{anopacid}" ></span>

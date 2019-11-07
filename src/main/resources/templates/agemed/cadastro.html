@@ -18,7 +18,7 @@
                 <div class="col-6">
                     <p>Selecione o paciente:</p>
                     <select th:field="*{pacmedpacid}" class="form-control" name="paciente">
-                        <option th:each=" pac : ${pacientes}" th:selected="(${pac.pacid} == *{pacmedpacid.pacid})" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('pacmedpacid')}" class="alert alert-danger" role="alert">
                         <span th:errors="*{pacmedpacid}"></span>
