@@ -28,7 +28,7 @@
                     <th><span th:text="${age.agecamp}"></span></th>
                     <th><span th:text="${#temporals.format(age.agedt, 'dd/MM/yyyy')}"></span></th>
                     <th><span th:text="${age.agehora}"></span></th>
-                    <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.anopacid.pacid}">Alterar</a></th>
+                    <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.ageid}">Alterar</a></th>
                 </tr>
             </tbody>
         </table>

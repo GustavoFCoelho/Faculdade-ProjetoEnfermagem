@@ -13,11 +13,12 @@
     </div>
     <div class="container">
         <form th:action="@{/agemed/save}" th:object="${agendaMedicamentos}" method="post">
+            <input type="hidden" th:field="*{pacmedid}" />
             <div class="form-row">
                 <div class="col-6">
                     <p>Selecione o paciente:</p>
                     <select th:field="*{pacmedpacid}" class="form-control" name="paciente">
-                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                        <option th:each=" pac : ${pacientes}" th:selected="(${pac.pacid} == *{pacmedpacid.pacid})" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
                     </select>
                     <div th:if="${#fields.hasErrors('pacmedpacid')}" class="alert alert-danger" role="alert">
                         <span th:errors="*{pacmedpacid}"></span>
@@ -96,50 +97,50 @@
                 <div class="col">
                     <label>Domingo:</label>
                     <select th:field="*{pacmeddom}" class="form-control" name="domMed">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="SUNDAY">Sim</option>
                     </select>
                 </div>
                 <div class="col">
                     <label>Segunda:</label>
                     <select th:field="*{pacmedseg}" class="form-control" name="segMed">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="MONDAY">Sim</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="terMed">Terça:</label>
                     <select th:field="*{pacmedter}" id="terMed" class="form-control">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="TUESDAY">Sim</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="quaMed">Quarta:</label>
                     <select th:field="*{pacmedqua}" id="quaMed" class="form-control">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="WENDNESDAY">Sim</option>
                     </select>
                 </div>
                 <div class="col">
                     <label for="quiMed">Quinta:</label>
                     <select th:field="*{pacmedqui}" id="quiMed" class="form-control">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="THURSDAY">Sim</option>
                     </select>
                 </div>
                 <div class="col">
                     <label>Sexta:</label>
                     <select th:field="*{pacmedsex}" name="sexMed" class="form-control">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="FRIDAY">Sim</option>
                     </select>
                 </div>
                 <div class="col">
                     <label>Sábado:</label>
                     <select th:field="*{pacmedsab}" name="sabMed" class="form-control">
-                        <option th:value="FALSE">Não</option>
-                        <option th:value="TRUE">Sim</option>
+                        <option th:value="null">Não</option>
+                        <option th:value="SATURDAY">Sim</option>
                     </select>
                 </div>
             </div>

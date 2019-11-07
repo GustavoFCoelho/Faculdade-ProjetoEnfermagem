@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Anotação</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Idoso</th>
+                    <th>Medicamento</th>
+                    <th>Dosagem</th>
+                    <th>Horário</th>
+                    <th>Data Final</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="age : ${agenda}">
+                    <th><span th:text="${age.pacmedpacid.pacnome}"></span> <span th:text="${age.pacmedpacid.pacsobrenome}"></span></th>
+                    <th><span th:text="${age.pacmedmedid.mednome}"></span> </th>
+                    <th><span th:text="${age.pacmedmedid.meddosagem}"></span></th>
+                    <th th:if="${age.pacmedhora} != null"><span  th:text="${age.pacmedhora}"></span></th>
+                    <th th:if="${age.pacmedhora2} != null"><span  th:text="${age.pacmedhora2}"></span></th>
+                    <th th:if="${age.pacmedhora3} != null"><span th:text="${age.pacmedhora3}"></span></th>
+                    <th th:if="${age.pacmedhora == null and age.pacmedhora2 == null and age.pacmedhora3 == null}"><p>Não definido</p></th>
+                    <th><span th:text="${#temporals.format(age.pacmedfim, 'dd/MM/yyyy')}"></span></th>
+                    <th><a class="btn btn-info" th:href="@{/agemed/alteraagenda/} + ${age.pacmedid}">Alterar</a></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>

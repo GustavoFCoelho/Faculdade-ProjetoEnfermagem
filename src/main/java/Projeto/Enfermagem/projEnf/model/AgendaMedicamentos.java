@@ -1,5 +1,7 @@
 package Projeto.Enfermagem.projEnf.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,20 +19,29 @@ public class AgendaMedicamentos {
     private String pacmedinfo;
     @NotBlank(message = "Informe a dosagem que o idoso deve tomar!")
     private String pacmeddosagem;
-    @NotNull(message = "Informe a data de inicio da medicação!")
+    @DateTimeFormat(pattern="yyyy-MM-dd") @NotNull(message = "Informe a data de inicio da medicação!")
     private LocalDate pacmedinicio;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private LocalDate pacmedfim;
+    @DateTimeFormat(pattern = "HH:mm")
     private LocalTime pacmedhora;
+    @DateTimeFormat(pattern = "HH:mm")
     private LocalTime pacmedhora2;
+    @DateTimeFormat(pattern = "HH:mm")
     private LocalTime pacmedhora3;
     private boolean pacmeddias;
-    private boolean pacmeddom;
-    private boolean pacmedseg;
-    private boolean pacmedter;
-    private boolean pacmedqua;
-    private boolean pacmedqui;
-    private boolean pacmedsex;
-    private boolean pacmedsab;
+    private String pacmeddom;
+    private String pacmedseg;
+    private String pacmedter;
+    private String pacmedqua;
+    private String pacmedqui;
+    private String pacmedsex;
+    private String pacmedsab;
+    private boolean pacmedstatus = true;
+
+    public AgendaMedicamentos(){
+        pacmedpacid = new Paciente();
+    }
 
     public int getPacmedid() { return pacmedid; }
     public void setPacmedid(int pacmedid) { this.pacmedid = pacmedid; }
@@ -52,20 +63,22 @@ public class AgendaMedicamentos {
     public void setPacmedhora2(LocalTime pacmedhora2) { this.pacmedhora2 = pacmedhora2; }
     public LocalTime getPacmedhora3() { return pacmedhora3; }
     public void setPacmedhora3(LocalTime pacmedhora3) { this.pacmedhora3 = pacmedhora3; }
-    public boolean isPacmeddom() { return pacmeddom; }
-    public void setPacmeddom(boolean pacmeddom) { this.pacmeddom = pacmeddom; }
-    public boolean isPacmedseg() { return pacmedseg; }
-    public void setPacmedseg(boolean pacmedseg) { this.pacmedseg = pacmedseg; }
-    public boolean isPacmedter() { return pacmedter; }
-    public void setPacmedter(boolean pacmedter) { this.pacmedter = pacmedter; }
-    public boolean isPacmedqua() { return pacmedqua; }
-    public void setPacmedqua(boolean pacmedqua) { this.pacmedqua = pacmedqua; }
-    public boolean isPacmedqui() { return pacmedqui; }
-    public void setPacmedqui(boolean pacmedqui) { this.pacmedqui = pacmedqui; }
-    public boolean isPacmedsex() { return pacmedsex; }
-    public void setPacmedsex(boolean pacmedsex) { this.pacmedsex = pacmedsex; }
-    public boolean isPacmedsab() { return pacmedsab; }
-    public void setPacmedsab(boolean pacmedsab) { this.pacmedsab = pacmedsab; }
+    public String getPacmeddom() { return pacmeddom; }
+    public void setPacmeddom(String pacmeddom) { this.pacmeddom = pacmeddom; }
+    public String getPacmedseg() { return pacmedseg; }
+    public void setPacmedseg(String pacmedseg) { this.pacmedseg = pacmedseg; }
+    public String getPacmedter() { return pacmedter; }
+    public void setPacmedter(String pacmedter) { this.pacmedter = pacmedter; }
+    public String getPacmedqua() { return pacmedqua; }
+    public void setPacmedqua(String pacmedqua) { this.pacmedqua = pacmedqua; }
+    public String getPacmedqui() { return pacmedqui; }
+    public void setPacmedqui(String pacmedqui) { this.pacmedqui = pacmedqui; }
+    public String getPacmedsex() { return pacmedsex; }
+    public void setPacmedsex(String pacmedsex) { this.pacmedsex = pacmedsex; }
+    public String getPacmedsab() { return pacmedsab; }
+    public void setPacmedsab(String pacmedsab) { this.pacmedsab = pacmedsab; }
     public boolean isPacmeddias() { return pacmeddias; }
     public void setPacmeddias(boolean pacmeddias) { this.pacmeddias = pacmeddias; }
+    public boolean isPacmedstatus() { return pacmedstatus; }
+    public void setPacmedstatus(boolean pacmedstatus) { this.pacmedstatus = pacmedstatus; }
 }
