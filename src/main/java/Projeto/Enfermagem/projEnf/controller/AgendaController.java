@@ -36,15 +36,17 @@ public class AgendaController {
     }
 
     @PostMapping("age/save")
-    public ModelAndView save(@Valid Agenda agenda, BindingResult result, ModelMap modelMap){
+    public ModelAndView save(@Valid Agenda agenda, BindingResult result, ModelMap map){
         if(result.hasErrors()){
-            modelMap.addAttribute("conteudo","/age/cadastro");
-            modelMap.addAttribute("pacientes", agendaService.getPacService().callPacs());
-            return new ModelAndView("layout",modelMap);
+            map.addAttribute("conteudo","/age/cadastro");
+            map.addAttribute("pacientes", agendaService.getPacService().callPacs());
+            return new ModelAndView("layout",map);
         }
-        System.out.println(agenda.getAgeid());
+
         agendaService.save(agenda);
-        return new ModelAndView("redirect:/age");
+        map.addAttribute("message", "Cadastrado com sucesso");
+        map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
     }
 
     @GetMapping("age/alteraagenda/{id}")

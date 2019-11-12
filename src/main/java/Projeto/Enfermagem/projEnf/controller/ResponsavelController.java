@@ -35,6 +35,8 @@ public class ResponsavelController {
             return new ModelAndView("layout", map);
         }
         resService.save(responsaveis);
-        return new ModelAndView("redirect:/resp");
+        map.addAttribute("message", "Cadastrado com sucesso");
+        map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
     }
 }

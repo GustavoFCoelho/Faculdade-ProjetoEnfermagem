@@ -34,7 +34,9 @@ public class PacController {
             return new ModelAndView("layout", map);
         }
         pacService.savePac(pac);
-        return new ModelAndView("redirect:/pac");
+        map.addAttribute("message", "Cadastrado com sucesso");
+        map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
     }
 
     @GetMapping("/prontuario")

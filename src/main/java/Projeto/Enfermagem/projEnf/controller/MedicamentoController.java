@@ -27,11 +27,13 @@ public class MedicamentoController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid Medicamento medicamento, BindingResult result){
+    public ModelAndView save(@Valid Medicamento medicamento, BindingResult result, ModelMap map){
         if(result.hasErrors())
             return new ModelAndView("layout","conteudo","/med/cadastro");
 
         medicamentoService.saveMedicamento(medicamento);
-        return new ModelAndView("redirect:/med");
+        map.addAttribute("message", "Cadastrado com sucesso");
+        map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
     }
 }

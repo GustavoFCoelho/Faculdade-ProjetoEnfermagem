@@ -28,11 +28,13 @@ public class RelController {
     }
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid Religiao reDTO, BindingResult result){
+    public ModelAndView save(@Valid Religiao reDTO, BindingResult result, ModelMap map){
         if(result.hasErrors()){
             return new ModelAndView("layout", "conteudo", "/rel/cadastro");
         }
         reService.saverel(reDTO);
-        return new ModelAndView("redirect:/rel");
+        map.addAttribute("message", "Cadastrado com sucesso");
+        map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
     }
 }

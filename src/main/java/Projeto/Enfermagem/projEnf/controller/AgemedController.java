@@ -39,7 +39,9 @@ public class AgemedController {
         }
 
         agemedService.save(agendaMedicamentos);
-        return new ModelAndView("redirect:/agemed");
+        map.addAttribute("message", "Cadastrado com sucesso");
+        map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
     }
     @GetMapping("/agenda")
     public ModelAndView agenda(ModelMap map) {
