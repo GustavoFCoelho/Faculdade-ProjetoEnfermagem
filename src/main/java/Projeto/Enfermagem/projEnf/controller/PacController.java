@@ -39,6 +39,11 @@ public class PacController {
 
     @GetMapping("/prontuario")
     public ModelAndView prontuário(ModelMap map){
+        if(pacService.callPacs().size() == 0){
+            map.addAttribute("message", "Ainda não foram cadastrados idosos no sistema!");
+            map.addAttribute("conteudo", "genericpage");
+            return new ModelAndView("layout", map);
+        }
         map.addAttribute("pacientes", pacService.callPacs());
         map.addAttribute("conteudo","/pac/prontuario");
         map.addAttribute("paciente", new Paciente());
