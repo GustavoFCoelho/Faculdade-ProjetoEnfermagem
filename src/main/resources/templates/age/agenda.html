@@ -14,10 +14,11 @@
     <div class="container">
         <table class="table table-light">
             <thead class="thead-dark">
-                <tr>
+                <tr>,
                     <th>Idoso</th>
                     <th>Compromisso</th>
                     <th>Endereço</th>
+                    <th>Data</th>
                     <th>Horário</th>
                     <th>Ações</th>
                 </tr>
@@ -26,6 +27,7 @@
                 <tr th:each="age : ${agenda}">
                     <th><span th:text="${age.anopacid.pacnome}"></span> <span th:text="${age.anopacid.pacsobrenome}"></span></th>
                     <th><span th:text="${age.agecamp}"></span></th>
+                    <th><span th:text="(${age.agerua}+ ' ' + ${age.ageruanum})"></span></th>
                     <th><span th:text="${#temporals.format(age.agedt, 'dd/MM/yyyy')}"></span></th>
                     <th><span th:text="${age.agehora}"></span></th>
                     <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.ageid}">Alterar</a></th>

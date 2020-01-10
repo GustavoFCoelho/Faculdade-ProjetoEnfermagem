@@ -17,7 +17,7 @@
                 <div class="col">
                     <label>Idoso:</label>
                     <select th:field="*{pacid}" class="form-control">
-                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
                     </select>
                     <div class="text-center">
                         <input type="submit" class="mt-5 btn btn-dark" value="Gerar Prontuário">
@@ -183,8 +183,9 @@
                                             th:text="${#temporals.format(anotacoes.anodt, 'dd/MM/yyyy')}">text</span>
                                     </div>
                                     <div class="col-10 border p-2">
-                                        <span>Mensagem: </span><span
-                                            th:text="${anotacoes.anocamp}">text</span></div>
+                                        <span><b>Mensagem: </b></span><span
+                                            th:text="${anotacoes.anocamp}">text</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
