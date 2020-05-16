@@ -10,6 +10,6 @@ import java.util.List;
 
 @Repository
 public interface AgendaMedRepository extends JpaRepository<AgendaMedicamentos,Long> {
-    @Query("select * from AgendaMedicamentos a where a.inicio <= ?1 and a.fim >= ?1")
+    @Query("select a from AgendaMedicamentos a where a.inicio <= ?1 and a.fim >= ?1")
     List<AgendaMedicamentos> acharPorStatusEEntreInicioEFim(LocalDate data);
 }

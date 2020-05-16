@@ -15,4 +15,8 @@ public class ResponsavelDatastore {
     public ResponsavelModel salvar(ResponsavelModel responsavelModel){
         return converter.toModel(repository.save(converter.toEntity(responsavelModel)));
     }
+
+    public ResponsavelModel acharPorPessoaId(Long id) {
+        return converter.toModel(repository.findByPessoaId(id));
+    }
 }

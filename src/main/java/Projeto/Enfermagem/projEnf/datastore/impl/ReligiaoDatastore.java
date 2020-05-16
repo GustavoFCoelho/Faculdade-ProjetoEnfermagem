@@ -21,4 +21,8 @@ public class ReligiaoDatastore {
     public List<ReligiaoModel> buscarReligioes(){
         return converter.toModelList(repository.findAll());
     }
+
+    public ReligiaoModel acharPorId(Long religiaoId) {
+        return converter.toModel(repository.findById(religiaoId).orElse(null));
+    }
 }

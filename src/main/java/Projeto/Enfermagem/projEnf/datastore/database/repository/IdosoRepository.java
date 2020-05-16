@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IdosoRepository extends JpaRepository<Idoso, Long> {
+    Idoso findByPessoaId(Long id);
 }

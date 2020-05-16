@@ -15,7 +15,7 @@ public class IdosoDTO {
     private Long id;
     private Long pessoaId;
     @NotBlank(message = "Infome como o idoso foi encaminhado")
-    private String enchaminhado;
+    private String encaminhado;
     private String diabetico;
     @NotBlank(message = "Infome como foi a chegada do idoso")
     private String chegada;

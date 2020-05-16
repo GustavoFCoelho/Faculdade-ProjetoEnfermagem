@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResponsavelRepository extends JpaRepository<Responsavel,Integer> {
+    Responsavel findByPessoaId(Long id);
 }

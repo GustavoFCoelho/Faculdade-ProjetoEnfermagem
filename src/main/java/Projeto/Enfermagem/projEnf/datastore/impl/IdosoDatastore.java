@@ -30,4 +30,8 @@ public class IdosoDatastore {
         pessoas.addAll(repository.findAll().stream().map(Idoso::getPessoa).collect(Collectors.toList()));
         return pessoaEntityConverter.toModelList(pessoas);
     }
+
+    public IdosoModel acharPorPessoaId(Long id) {
+        return converter.toModel(repository.findByPessoaId(id));
+    }
 }

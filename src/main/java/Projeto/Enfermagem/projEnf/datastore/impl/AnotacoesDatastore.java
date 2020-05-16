@@ -6,6 +6,8 @@ import Projeto.Enfermagem.projEnf.models.model.AnotacoesModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class AnotacoesDatastore {
@@ -14,5 +16,9 @@ public class AnotacoesDatastore {
 
     public AnotacoesModel salvar(AnotacoesModel model) {
         return converter.toModel(repository.save(converter.toEntity(model)));
+    }
+
+    public List<AnotacoesModel> acharTodosPorPessoaId(Long id) {
+        return converter.toModelList(repository.findAllByIdosoId(id));
     }
 }

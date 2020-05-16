@@ -7,6 +7,7 @@ import Projeto.Enfermagem.projEnf.models.dto.IdosoDTO;
 import Projeto.Enfermagem.projEnf.models.dto.PessoaDTO;
 import Projeto.Enfermagem.projEnf.models.dto.ReligiaoDTO;
 import Projeto.Enfermagem.projEnf.models.dto.UserDTO;
+import Projeto.Enfermagem.projEnf.models.model.PessoaModel;
 import Projeto.Enfermagem.projEnf.resource.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -94,4 +95,28 @@ public class PessoaController {
         map.addAttribute("conteudo", "genericpage");
         return new ModelAndView("layout", map);
     }
+
+    @GetMapping("/prontuario")
+    public ModelAndView prontuário(ModelMap map){
+        List<PessoaModel> list = pessoaService.getAllIdososPessoas();
+        if(list.size() == 0){
+            map.addAttribute("message", "Ainda não foram cadastrados idosos no sistema!");
+            map.addAttribute("conteudo", "genericpage");
+            return new ModelAndView("layout", map);
+        }
+        map.addAttribute("idosos", list);
+        map.addAttribute("conteudo","/pessoa/prontuario");
+        map.addAttribute("idoso", new PessoaDTO());
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/prontuario/buscar")
+    public ModelAndView callPront(PessoaDTO idoso, ModelMap map){
+        map.addAttribute("prontuario", pessoaService.getProntuario(idoso.getId()));
+        map.addAttribute("idosos", pessoaService.getAllIdososPessoas());
+        map.addAttribute("conteudo","/pessoa/prontuario");
+        map.addAttribute("idoso", new PessoaDTO());
+        return new ModelAndView("layout", map);
+    }
+
 }

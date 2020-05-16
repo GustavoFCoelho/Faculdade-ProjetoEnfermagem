@@ -49,7 +49,7 @@ public class AgendaMedicamentoDatastore {
         } else if (horaAtual <= horab) {
             return horabase;
         } else if(horaAtual > horab){
-            return LocalTime.of(horab - horasmedicamento.intValue(), horabase.getMinute());
+            return LocalTime.of(horab + horasmedicamento.intValue(), horabase.getMinute());
         }
         return null;
     }

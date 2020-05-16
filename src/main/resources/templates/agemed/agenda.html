@@ -25,10 +25,10 @@
             </thead>
             <tbody>
                 <tr th:each="age : ${agenda}">
-                    <th><span th:text="${age.pessoaNome} +' '+ ${age.pessoasobrenome}"></span></th>
-                    <th><span th:text="${age.medicamentoNome} + ' ' ${age.medicamentoDosagem}"></span> </th>
+                    <th><span th:text="${age.pessoaNome} +' '+ ${age.pessoaSobrenome}"></span></th>
+                    <th><span th:text="${age.medicamentoNome} + ' '+ ${age.medicamentoDosagem}"></span> </th>
                     <th><span th:text="${age.dosagem}"></span></th>
-                    <th><span th:text="${age.horaMediamento}"></span></th>
+                    <th><span th:text="${age.horaMedicamento}"></span></th>
                     <th><span th:text="${#temporals.format(age.diaFimMedicamento, 'dd/MM/yyyy')}"></span></th>
                     <th><a class="btn btn-info" th:href="@{/agemed/alteraagenda/} + ${age.id}">Alterar</a></th>
                 </tr>
