@@ -1,0 +1,23 @@
+.erroList{
+    display: flex;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    z-index: 1;
+}
+
+.erroList ul{
+    list-style: none;
+}
+
+.erroList ul li{
+    margin: 0.5rem;
+    background-color: #ff4f4f;
+    padding: 0.5rem;
+    transition-duration: 1s;
+    transform: translateX(60%);
+}
+
+.erroList ul li:hover{
+    transform: translateX(0);
+}

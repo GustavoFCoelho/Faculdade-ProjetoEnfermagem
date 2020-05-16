@@ -25,12 +25,12 @@
             </thead>
             <tbody>
                 <tr th:each="age : ${agenda}">
-                    <th><span th:text="${age.anopacid.pacnome}"></span> <span th:text="${age.anopacid.pacsobrenome}"></span></th>
-                    <th><span th:text="${age.agecamp}"></span></th>
-                    <th><span th:text="(${age.agerua}+ ' ' + ${age.ageruanum})"></span></th>
-                    <th><span th:text="${#temporals.format(age.agedt, 'dd/MM/yyyy')}"></span></th>
-                    <th><span th:text="${age.agehora}"></span></th>
-                    <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.ageid}">Alterar</a></th>
+                    <th><span th:text="${age.pessoaNome} + ' ' + ${age.pessoaSobrenome}"></span></th>
+                    <th><span th:text="${age.compromisso}"></span></th>
+                    <th><span th:text="(${age.rua}+ ' ' + ${age.numerorua})"></span></th>
+                    <th><span th:text="${#temporals.format(age.data, 'dd/MM/yyyy')}"></span></th>
+                    <th><span th:text="${age.hora}"></span></th>
+                    <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.id}"><i class="fas fa-edit"></i> Editar</a></th>
                 </tr>
             </tbody>
         </table>

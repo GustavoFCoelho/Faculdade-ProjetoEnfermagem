@@ -1,0 +1,79 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Pessoa</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="erroList">
+        <ul>
+            <li th:each="erro:${ErroLista}" th:text="${erro}"></li>
+        </ul>
+    </div>
+    <div class="container">
+
+        <form th:action="@{/pessoa/save}" id="formPac" method="post" th:object="${pessoa}">
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-6">
+                        <label>Nome:</label>
+                        <input type="text" class="form-control" th:field="*{nome}" placeholder="Insira o nome">
+                    </div>
+                    <div class="col-6">
+                        <label>Sobrenome:</label>
+                        <input type="text" class="form-control" th:field="*{sobrenome}"
+                               placeholder="Insira o sobrenome">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-4">
+                        <label>RG:</label>
+                        <input type="text" class="form-control" th:field="*{rg}" placeholder="Insira o CPF">
+                    </div>
+                    <div class="col-4">
+                        <label>CPF:</label>
+                        <input type="text" class="form-control" th:field="*{cpf}" placeholder="Insira o RG">
+                    </div>
+                    <div class="col-4">
+                        <label>Sexo da Pessoa:</label>
+                        <select type="text" class="form-control" th:field="*{sexo}" placeholder="Insira o sobrenome">
+                            <option value="Homem">Homem</option>
+                            <option value="Mulher">Mulher</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-6">
+                        <label>Data de nascimento:</label>
+                        <input type="date" class="form-control" th:field="*{datanascimento}">
+                    </div>
+                    <div class="col-6">
+                        <label>Data de Entrada:</label>
+                        <input type="date" class="form-control" th:field="*{dataentrada}">
+                    </div>
+                </div>
+            </div>
+            <div class="form-check">
+                <input type="radio" value="IDOSO" class="form-check-input" th:field="*{tipopessoa}">
+                <label class="form-check-label">Idoso </label>
+            </div>
+            <div class="form-check">
+                <input type="radio" value="CUIDADOR" class="form-check-input" th:field="*{tipopessoa}">
+                <label class="form-check-label">Cuidador</label>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Próximo</button>
+        </form>
+    </div>
+</div>
+
+</html>

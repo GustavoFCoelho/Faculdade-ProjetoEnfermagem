@@ -11,59 +11,46 @@
             </div>
         </div>
     </div>
+    <div class="erroList">
+        <ul>
+            <li th:each="erro:${ErroLista}" th:text="${erro}"></li>
+        </ul>
+    </div>
     <div class="container">
         <form th:action="@{/age/save}" th:object="${agenda}" method="post">
-            <input type="hidden" th:field="*{ageid}" />
+            <input type="hidden" th:field="*{id}" />
             <div class="form-row">
                 <div class="col">
                     <label>Selecione o paciente</label>
-                    <select class="form-control" th:field="*{anopacid}">
-                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="(${pac.pacnome} + ' ' + ${pac.pacsobrenome})"></option>
+                    <select class="form-control" th:field="*{pessoaId}">
+                        <option th:each=" idoso : ${idosos}" th:value="${idoso.id}" th:text="(${idoso.nome} + ' ' + ${idoso.sobrenome})"></option>
                     </select>
-                    <div th:if="${#fields.hasErrors('anopacid')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{anopacid}" ></span>
-                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label>Digite o Compromisso:</label>
-                    <input class="form-control" type="text" th:field="*{agecamp}" placeholder="Digite o compromisso">
-                    <div th:if="${#fields.hasErrors('agecamp')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{agecamp}" ></span>
-                    </div>
+                    <input class="form-control" type="text" th:field="*{descricao}" placeholder="Digite o compromisso">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label>Informe a Data:</label>
-                    <input class="form-control" type="date" th:field="*{agedt}">
-                    <div th:if="${#fields.hasErrors('agedt')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{agedt}" ></span>
-                    </div>
+                    <input class="form-control" type="date" th:field="*{data}">
                 </div>
                 <div class="col">
                     <label>Informe o horario</label>
-                    <input class="form-control" type="time" th:field="*{agehora}">
-                    <div th:if="${#fields.hasErrors('agehora')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{agehora}" ></span>
-                    </div>
+                    <input class="form-control" type="time" th:field="*{hora}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col">
                     <label>Digite o Endereço</label>
-                    <input class="form-control" type="text" th:field="*{agerua}" placeholder="Digite o endereço">
-                    <div th:if="${#fields.hasErrors('agerua')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{agerua}" ></span>
-                    </div>
+                    <input class="form-control" type="text" th:field="*{rua}" placeholder="Digite o endereço">
                 </div>
                 <div class="col">
                     <label>Digite o Número</label>
-                    <input class="form-control" type="text" th:field="*{ageruanum}" placeholder="Digite o número">
-                    <div th:if="${#fields.hasErrors('ageruanum')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{ageruanum}" ></span>
-                    </div>
+                    <input class="form-control" type="text" th:field="*{numerorua}" placeholder="Digite o número">
                 </div>
             </div><hr />
             <div class="form-row text-center">

@@ -11,35 +11,31 @@
             </div>
         </div>
     </div>
+    <div class="erroList">
+        <ul>
+            <li th:each="erro:${ErroLista}" th:text="${erro}"></li>
+        </ul>
+    </div>
     <div class="container">
         <form th:action="@{/ano/save}" th:object="${anotacoes}" method="post">
-            <input type="hidden" th:field="*{anoid}" />
+            <input type="hidden" th:field="*{id}" />
             <div class="form-row">
                 <div class="col-6">
                     <label>Idoso:</label>
-                    <select th:field="*{anopacid}" class="form-control">
-                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    <select th:field="*{idosoId}" class="form-control">
+                        <option th:each=" idoso : ${idosos}" th:value="${idoso.id}" th:text="${idoso.nome} + ' ' + ${idoso.sobrenome}"></option>
                     </select>
-                    <div th:if="${#fields.hasErrors('anopacid')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{anopacid}"></span>
-                    </div>
                 </div>
 
                 <div class="col-6">
                     <label>Data da anotação</label>
-                    <input class="form-control" type="date" th:field="*{anodt}">
-                    <div th:if="${#fields.hasErrors('anodt')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{anodt}"></span>
-                    </div>
+                    <input class="form-control" type="date" th:field="*{data}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-12">
                     <label>Descrição da anotação</label>
-                    <textarea class="form-control" th:field="*{anocamp}"></textarea>
-                    <div th:if="${#fields.hasErrors('anocamp')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{anocamp}"></span>
-                    </div>
+                    <textarea class="form-control" th:field="*{descricao}"></textarea>
                 </div>
             </div>
             <hr>

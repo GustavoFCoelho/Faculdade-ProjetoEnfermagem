@@ -11,35 +11,31 @@
             </div>
         </div>
     </div>
+    <div class="erroList">
+        <ul>
+            <li th:each="erro:${ErroLista}" th:text="${erro}"></li>
+        </ul>
+    </div>
     <div class="container">
         <form th:action="@{/med/save}" th:object="${medicamento}" method="post">
-            <input type="hidden" th:field="*{medid}" />
+            <input type="hidden" th:field="*{id}" />
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-6">
-                        <label for="mednome">Medicamento:</label>
-                        <input type="text" class="form-control" th:field="*{mednome}" placeholder="Rivotril"/>
-                        <div th:if="${#fields.hasErrors('mednome')}" class="alert alert-danger" role="alert">
-                            <span th:errors="*{mednome}" ></span>
-                        </div>
+                        <label>Medicamento:</label>
+                        <input type="text" class="form-control" th:field="*{nome}" placeholder="Rivotril"/>
                     </div>
                     <div class="col-6">
-                        <label for="medinfo">Dosagem:</label>
-                        <input type="text" class="form-control" th:field="*{meddosagem}" placeholder="Dosagem"/>
-                        <div th:if="${#fields.hasErrors('meddosagem')}" class="alert alert-danger" role="alert">
-                            <span th:errors="*{meddosagem}" ></span>
-                        </div>
+                        <label>Dosagem:</label>
+                        <input type="text" class="form-control" th:field="*{dosagem}" placeholder="Dosagem"/>
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-row">
                     <div class="col-12">
-                        <div th:if="${#fields.hasErrors('medinfo')}" class="alert alert-danger" role="alert">
-                            <span th:errors="*{medinfo}" ></span>
-                        </div>
-                        <label for="medinfo">Descrição do medicamento:</label>
-                        <textarea class="form-control" th:field="*{medinfo}" rows="5" placeholder="Atua como calmante"></textarea>
+                        <label>Descrição do medicamento:</label>
+                        <textarea class="form-control" th:field="*{informacao}" rows="5" placeholder="EX: Atua como calmante"></textarea>
                     </div>
                 </div>
             </div>

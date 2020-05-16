@@ -11,56 +11,46 @@
             </div>
         </div>
     </div>
+    <div class="erroList">
+        <ul>
+            <li th:each="erro:${ErroLista}" th:text="${erro}"></li>
+        </ul>
+    </div>
     <div class="container">
-        <form th:action="@{/resp/save}" th:object="${responsaveis}" method="post">
-            <input type="hidden" th:field="*{resid}">
+        <form th:action="@{/resp/save}" th:object="${responsavel}" method="post">
+            <input type="hidden" th:field="*{id}">
             <div class="form-row">
                 <div class="col-12">
-                    <label for="respacid">Idoso:</label>
-                    <select class="form-control" th:field="*{respacid}" id="">
-                        <option th:each=" pac : ${pacientes}" th:value="${pac.pacid}" th:text="${pac.pacnome}"></option>
+                    <label>Idoso:</label>
+                    <select class="form-control" th:field="*{pessoaId}" id="">
+                        <option th:each=" idoso: ${idosos}" th:value="${idoso.id}" th:text="${idoso.nome} + ${idoso.sobrenome}"></option>
                     </select>
-                    <div th:if="${#fields.hasErrors('respacid')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{respacid}"></span>
-                    </div>
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-6">
-                    <label for="resnome">Nome do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{resnome}">
-                    <div th:if="${#fields.hasErrors('resnome')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{resnome}"></span>
-                    </div>
+                    <label>Nome do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{nome}">
                 </div>
                 <div class="col-6">
-                    <label for="ressobrenome">Sobrenome do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{ressobrenome}">
-                    <div th:if="${#fields.hasErrors('ressobrenome')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{ressobrenome}"></span>
-                    </div>
+                    <label>Sobrenome do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{sobrenome}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-6">
-                    <label for="rescpf">CPF do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{rescpf}">
-                    <div th:if="${#fields.hasErrors('rescpf')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{rescpf}"></span>
-                    </div>
+                    <label>CPF do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{cpf}">
                 </div>
                 <div class="col-6">
-                    <label for="resdtnasc">Data de nascimento do responsavel</label>
-                    <input class="form-control" type="date" th:field="*{resdtnasc}">
-                    <div th:if="${#fields.hasErrors('resdtnasc')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{resdtnasc}"></span>
-                    </div>
+                    <label>Data de nascimento do responsavel</label>
+                    <input class="form-control" type="date" th:field="*{datanascimento}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-3">
-                    <label for="resestado">Estado(UF):</label>
-                    <select th:field="*{resestado}" class="form-control">
+                    <label>Estado(UF):</label>
+                    <select th:field="*{estado}" class="form-control">
                         <option value="AC">Acre</option>
                         <option value="AL">Alagoas</option>
                         <option value="AP">Amapá</option>
@@ -91,41 +81,26 @@
                     </select>
                 </div>
                 <div class="col-3">
-                    <label for="rescidade">Cidade do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{rescidade}">
-                    <div th:if="${#fields.hasErrors('rescidade')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{rescidade}"></span>
-                    </div>
+                    <label>Cidade do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{cidade}">
                 </div>
                 <div class="col-3">
-                    <label for="resendrua">Rua do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{resendrua}">
-                    <div th:if="${#fields.hasErrors('resendrua')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{resendrua}"></span>
-                    </div>
+                    <label>Rua do responsavel</label>
+                    <input class="form-control" type="text" th:field="*{enderecorua}">
                 </div>
                 <div class="col-3">
                     <label for="resendnum">Número da habitação do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{resendnum}">
-                    <div th:if="${#fields.hasErrors('resendnum')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{resendnum}"></span>
-                    </div>
+                    <input class="form-control" type="text" th:field="*{endereconumero}">
                 </div>
             </div>
             <div class="form-row">
                 <div class="col-3">
                     <label for="restelddd">DDD do telefone do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{restelddd}">
-                    <div th:if="${#fields.hasErrors('restelddd')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{restelddd}"></span>
-                    </div>
+                    <input class="form-control" type="text" th:field="*{telefoneddd}">
                 </div>
                 <div class="col-9">
                     <label for="restelnum1">Telefone do responsavel</label>
-                    <input class="form-control" type="text" th:field="*{restelnum1}">
-                    <div th:if="${#fields.hasErrors('restelnum1')}" class="alert alert-danger" role="alert">
-                        <span th:errors="*{restelnum1}"></span>
-                    </div>
+                    <input class="form-control" type="text" th:field="*{telefonenumero}">
                 </div>
             </div>
             <hr>

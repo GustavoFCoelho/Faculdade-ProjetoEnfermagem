@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Cadastro de Religião</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="erroList">
+        <ul>
+            <li th:each="erro:${ErroLista}" th:text="${erro}"></li>
+        </ul>
+    </div>
+    <div class="container">
+        <form th:action="@{/rel/save}" th:object="${religiao}" method="post">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-6">
+                        <label>Nome da Religião:</label>
+                        <input type="text" class="form-control" th:field="*{nome}" placeholder="Cristão"/>
+                    </div>
+                    <div class="col-6">
+                        <label>Vertente da Religião</label>
+                        <input type="text" class="form-control" th:field="*{vertente}" placeholder="Católica"/>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col-12">
+                        <label>Descrição da Religião:</label>
+                        <textarea class="form-control" th:field="*{descricao}" rows="10"
+                                  placeholder="- A religião tem impedimentos como não permite o consumo de carne"></textarea>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-5"></div>
+                <div class="col-3">
+                    <input type="submit" value="Cadastrar" class="btn btn-success">
+                </div>
+                <div class="col-4"></div>
+            </div>
+        </form>
+    </div>
+</div>
+</html>
