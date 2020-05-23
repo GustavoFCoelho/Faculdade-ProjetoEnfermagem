@@ -21,7 +21,7 @@
             <input type="hidden" th:field="*{id}" />
             <div class="form-row">
                 <div class="col">
-                    <label>Selecione o paciente</label>
+                    <label>Selecione o Idoso</label>
                     <select class="form-control" th:field="*{pessoaId}">
                         <option th:each=" idoso : ${idosos}" th:value="${idoso.id}" th:text="(${idoso.nome} + ' ' + ${idoso.sobrenome})"></option>
                     </select>

@@ -23,28 +23,60 @@
             <input type="hidden" th:field="*{pessoaId}">
             <div class="form-group">
                 <div class="form-row">
-                    <label>Encaminhado:</label>
-                    <textarea class="form-control" th:field="*{enchaminhado}"
-                          placeholder="Detalhes sobre o processo de encaminhamento do Idoso"></textarea>
+                    <div class="col-6">
+                        <label>Altura do idoso:</label>
+                        <input type="text" class="form-control" th:field="*{altura}">
+                    </div>
+                    <div class="col-6">
+                        <label>Peso do idoso:</label>
+                        <input type="text" class="form-control" th:field="*{peso}">
+                    </div>
                 </div>
-                <div class="form-row">
-                    <label>Chegada:</label>
-                    <textarea class="form-control" th:field="*{chegada}"
-                          placeholder="Detalhes sobre a chegada do Idoso"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <div class="form-row">
+                        <div class="col-4">
+                            <label>Encaminhado</label>
+                            <select type="text" class="form-control" th:field="*{encaminhado}">
+                                <option value="Familia">Familia</option>
+                                <option value="Rua">Rua</option>
+                                <option value="Hospital">Hospital</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label>Chegada:</label>
+                            <select type="text" class="form-control" th:field="*{chegada}">
+                                <option value="Comunicativo">Comunicativo</option>
+                                <option value="Consciênte">Consciênte</option>
+                                <option value="Orientado">Orientado</option>
+                                <option value="Confuso">Confuso</option>
+                            </select>
+                        </div>
+                        <div class="col-4">
+                            <label>Etnia:</label>
+                            <select type="text" class="form-control" th:field="*{etnia}">
+                                <option value="Branco">Branco</option>
+                                <option value="Pardo">Pardo</option>
+                                <option value="Negro">Negro</option>
+                                <option value="Indio">Indio</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-row">
-                    <div class="col-4">
+                    <div class="col-3">
                         <label>Possui Diabete:</label>
-                        <select type="text" class="form-control" th:field="*{diabetico}" placeholder="Insira o sobrenome">
+                        <select type="text" class="form-control" th:field="*{diabetico}">
                             <option value="Não Possui">Não Possui</option>
                             <option value="Possui">Possui</option>
                         </select>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <label>Possui Ulcera:</label>
-                        <select type="text" class="form-control" th:field="*{estagioulcera}" placeholder="Insira o sobrenome">
+                        <select type="text" class="form-control" th:field="*{estagioulcera}">
                             <option value="0">0 - Não Possui Ulcera</option>
                             <option value="1">1 - Estagio I</option>
                             <option value="2">2 - Estagio II</option>
@@ -52,11 +84,64 @@
                             <option value="4">4 - Estagio IV</option>
                         </select>
                     </div>
-                    <div class="col-4">
+                    <div class="col-3">
                         <label>Possui Crise Convulsiva:</label>
-                        <select type="text" class="form-control" th:field="*{criseconvulsiva}" placeholder="Insira o sobrenome">
+                        <select type="text" class="form-control" th:field="*{criseconvulsiva}">
                             <option value="Não Possui">Não Possui</option>
                             <option value="Possui">Possui</option>
+                        </select>
+                    </div>
+                    <div class="col-3">
+                        <label>Possui Hipertensão:</label>
+                        <select type="text" class="form-control" th:field="*{hipertenso}">
+                            <option value="Não Possui">Não Possui</option>
+                            <option value="Possui">Possui</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label>Estado Civil:</label>
+                        <select type="text" class="form-control" th:field="*{estadocivil}">
+                            <option value="Não Possui">Casado</option>
+                            <option value="Não Possui">Solteiro</option>
+                            <option value="Não Possui">Viuvo</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Grau de Dependência:</label>
+                        <select type="text" class="form-control" th:field="*{graudependencia}">
+                            <option value="Sem Auxilio">Sem Auxilio</option>
+                            <option value="Muletas">Muletas</option>
+                            <option value="Cadeira de Rodas">Cadeira de Rodas</option>
+                            <option value="Acamado">Acamado</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-row">
+                    <div class="col">
+                        <label>Possui Vicio:</label>
+                        <select type="text" class="form-control" th:field="*{possuivicio}">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Faz uso de medicamento continuo:</label>
+                        <select type="text" class="form-control" th:field="*{usamedicamento}">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Fez alguma cirurgia:</label>
+                        <select type="text" class="form-control" th:field="*{fezcirurgia}">
+                            <option value="Não">Não</option>
+                            <option value="Sim">Sim</option>
                         </select>
                     </div>
                 </div>
@@ -65,13 +150,17 @@
                 <div class="col">
                     <label>Religiao:</label>
                     <select th:field="*{religiaoId}" class="form-control">
-                        <option th:each=" religiao : ${rel}" th:value="${religiao.id}" th:text="(${religiao.nome} + ' - ' + ${religiao.vertente})"></option>
+                        <option th:each=" religiao : ${rel}" th:value="${religiao.id}"
+                                th:text="(${religiao.nome} + ' - ' + ${religiao.vertente})"></option>
                     </select>
                 </div>
             </div>
             <button class="btn btn-primary btn-block" type="submit">Concluir Cadastro</button>
         </form>
     </div>
+    <script>
+        $("#altura").mask("0.00");
+        $("#peso").mask("Z00.00", {translation: {'Z': {pattern: /[0-9]/, optional: true}}});
+    </script>
 </div>
-
 </html>

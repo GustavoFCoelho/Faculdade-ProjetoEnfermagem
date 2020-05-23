@@ -21,13 +21,14 @@
                                 th:text="(${ido.nome} + ' ' + ${ido.sobrenome})"></option>
                     </select>
                     <div class="text-center">
-                        <input type="submit" class="mt-5 btn btn-dark" value="Gerar Prontuário">
+                        <input type="submit" class="mt-5 btn btn-primary" value="Gerar Prontuário">
                     </div>
                 </div>
             </div>
         </form>
         <hr>
         <div th:if="${prontuario}!= null">
+            <button class="btn gen-pdf btn-block mb-2">Imprimir Prontuário</button>
             <div class="card rounded">
                 <div class="card-header bg-primary text-light text-center">Prontuario</div>
                 <div class="card-body">
@@ -53,10 +54,10 @@
                         <div class="col border p-2"><span>Sexo: </span><span
                                 th:text="${prontuario.pessoa.sexo}">text</span>
                         </div>
-                        <!--                        <div class="col border p-2"><span>Peso: </span><span th:text="${pacpront.pacpeso}">text</span>-->
-                        <!--                        </div>-->
-                        <!--                        <div class="col border p-2"><span>Altura: </span><span th:text="${pacpront.pacalt}">text</span>-->
-                        <!--                        </div>-->
+                        <div class="col border p-2"><span>Peso: </span><span th:text="${prontuario.idoso.peso}">text</span>
+                        </div>
+                        <div class="col border p-2"><span>Altura: </span><span th:text="${prontuario.idoso.altura}">text</span>
+                        </div>
                     </div>
                     <div class="row text-center mt-2">
                         <div class="col border p-2"><span>Encaminhamento: </span><span
@@ -67,12 +68,29 @@
                                 th:text="${prontuario.idoso.estagioulcera}">text</span></div>
                     </div>
                     <div class="row text-center mt-2">
-                        <div class="col border p-2"><span>Diabético: </span>
-                            <span th:if="${prontuario.idoso.diabetico} == Sim">Sim</span><span
-                                th:if="${prontuario.idoso.diabetico} == Nao">Não</span></div>
+                        <div class="col border p-2"><span>Possui Diabete: </span>
+                            <span th:text="${prontuario.idoso.diabetico}">text</span></div>
                         <div class="col border p-2"><span>Possui Crise Convulsiva: </span><span
-                                th:if="${prontuario.idoso.criseconvulsiva} == Sim">Sim</span><span
-                                th:if="${prontuario.idoso.criseconvulsiva} == Nao">Não</span></div>
+                            <span th:text="${prontuario.idoso.criseconvulsiva}">text</span></div>
+                        <div class="col border p-2"><span>Etnia: </span><span
+                            <span th:text="${prontuario.idoso.etnia}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Estado Civil: </span>
+                            <span th:text="${prontuario.idoso.estadocivil}">text</span></div>
+                        <div class="col border p-2"><span>Possui Hipertensão: </span>
+                            <span th:text="${prontuario.idoso.hipertenso}">text</span></div>
+                        <div class="col border p-2"><span>Grau de Dependência: </span>
+                            <span th:text="${prontuario.idoso.graudependencia}">text</span></div>
+                    </div>
+                    <div class="row text-center mt-2">
+                        <div class="col border p-2"><span>Possui Vicio: </span>
+                            <span th:text="${prontuario.idoso.possuivicio}">text</span></div>
+                        <div class="col border p-2"><span>Faz uso de medicamento Continuo: </span>
+                            <span th:text="${prontuario.idoso.usamedicamento}">text</span></div>
+                        <div class="col border p-2"><span>Fez cirurgia: </span>
+                            <span th:text="${prontuario.idoso.fezcirurgia}">text</span></div>
+
                     </div>
                     <div th:if="${prontuario.religiao} != null" class="card mt-2">
                         <div class="card-header bg-primary text-center text-light">Informações da religião do Idoso
@@ -143,7 +161,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

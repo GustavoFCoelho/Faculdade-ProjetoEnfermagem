@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.NumberFormat;
 
 import javax.validation.constraints.NotBlank;
 
@@ -22,4 +23,13 @@ public class IdosoDTO {
     private String estagioulcera;
     private String criseconvulsiva;
     private Long religiaoId;
+    private Double altura;
+    private String etnia;
+    private Double peso;
+    private String hipertenso;
+    private String estadocivil;
+    private String graudependencia;
+    private String usamedicamento;
+    private String possuivicio;
+    private String fezcirurgia;
 }

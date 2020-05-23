@@ -13,7 +13,7 @@
     </div>
     <div class="container">
         <table class="table table-striped">
-            <thead class="thead-dark">
+            <thead class="thead-light">
                 <tr>
                     <th>Idoso</th>
                     <th>Medicamento</th>
@@ -25,12 +25,12 @@
             </thead>
             <tbody>
                 <tr th:each="age : ${agenda}">
-                    <th><span th:text="${age.pessoaNome} +' '+ ${age.pessoaSobrenome}"></span></th>
-                    <th><span th:text="${age.medicamentoNome} + ' '+ ${age.medicamentoDosagem}"></span> </th>
-                    <th><span th:text="${age.dosagem}"></span></th>
-                    <th><span th:text="${age.horaMedicamento}"></span></th>
-                    <th><span th:text="${#temporals.format(age.diaFimMedicamento, 'dd/MM/yyyy')}"></span></th>
-                    <th><a class="btn btn-info" th:href="@{/agemed/alteraagenda/} + ${age.id}">Alterar</a></th>
+                    <td><span th:text="${age.pessoaNome} +' '+ ${age.pessoaSobrenome}"></span></td>
+                    <td><span th:text="${age.medicamentoNome} + ' '+ ${age.medicamentoDosagem}"></span> </td>
+                    <td><span th:text="${age.dosagem}"></span></td>
+                    <td><span th:text="${age.horaMedicamento}"></span></td>
+                    <td><span th:text="${#temporals.format(age.diaFimMedicamento, 'dd/MM/yyyy')}"></span></td>
+                    <td><a class="btn btn-info" th:href="@{/agemed/alteraagenda/} + ${age.id}">Alterar</a></td>
                 </tr>
             </tbody>
         </table>

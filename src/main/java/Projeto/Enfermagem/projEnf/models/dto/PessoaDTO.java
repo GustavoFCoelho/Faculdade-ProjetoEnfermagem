@@ -28,8 +28,10 @@ public class PessoaDTO {
     private String rg;
     private String sexo;
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @NotNull(message = "Informe a data de nascimento do idoso")
     private LocalDate datanascimento;
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @NotNull(message = "Informe a data de entrada do idoso")
     private LocalDate dataentrada;
     @NotNull(message = "Selecione o tipo da pessoa")
     private String tipopessoa;

@@ -23,6 +23,6 @@ public class ReligiaoDatastore {
     }
 
     public ReligiaoModel acharPorId(Long religiaoId) {
-        return converter.toModel(repository.findById(religiaoId).orElse(null));
+        return converter.toModel(repository.findById(religiaoId != null ? religiaoId : 0).orElse(null));
     }
 }

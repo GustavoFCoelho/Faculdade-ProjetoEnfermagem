@@ -12,9 +12,9 @@
         </div>
     </div>
     <div class="container">
-        <table class="table table-light">
-            <thead class="thead-dark">
-                <tr>,
+        <table class="table table-striped">
+            <thead class="thead-light">
+                <tr>
                     <th>Idoso</th>
                     <th>Compromisso</th>
                     <th>Endereço</th>
@@ -25,12 +25,12 @@
             </thead>
             <tbody>
                 <tr th:each="age : ${agenda}">
-                    <th><span th:text="${age.pessoaNome} + ' ' + ${age.pessoaSobrenome}"></span></th>
-                    <th><span th:text="${age.compromisso}"></span></th>
-                    <th><span th:text="(${age.rua}+ ' ' + ${age.numerorua})"></span></th>
-                    <th><span th:text="${#temporals.format(age.data, 'dd/MM/yyyy')}"></span></th>
-                    <th><span th:text="${age.hora}"></span></th>
-                    <th><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.id}"><i class="fas fa-edit"></i> Editar</a></th>
+                    <td><span th:text="${age.pessoaNome} + ' ' + ${age.pessoaSobrenome}"></span></td>
+                    <td><span th:text="${age.compromisso}"></span></td>
+                    <td><span th:text="(${age.rua}+ ' ' + ${age.numerorua})"></span></td>
+                    <td><span th:text="${#temporals.format(age.data, 'dd/MM/yyyy')}"></span></td>
+                    <td><span th:text="${age.hora}"></span></td>
+                    <td><a class="btn btn-info" th:href="@{/age/alteraagenda/} + ${age.id}"><i class="fas fa-edit"></i> Editar</a></td>
                 </tr>
             </tbody>
         </table>

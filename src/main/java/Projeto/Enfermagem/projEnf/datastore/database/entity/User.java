@@ -20,5 +20,6 @@ public class User {
     private Pessoa pessoa;
     private String login;
     private String senha;
+    private String role = "ADMIN";
 
 }

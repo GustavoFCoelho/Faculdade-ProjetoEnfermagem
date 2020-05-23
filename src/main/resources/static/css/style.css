@@ -21,3 +21,11 @@
 .erroList ul li:hover{
     transform: translateX(0);
 }
+
+.gen-pdf{
+    background-color: #80c6ff;
+}
+
+.gen-pdf:hover{
+    background-color: #5c9eff;
+}

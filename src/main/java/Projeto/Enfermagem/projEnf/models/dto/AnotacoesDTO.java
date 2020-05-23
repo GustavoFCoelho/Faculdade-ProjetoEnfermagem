@@ -21,5 +21,6 @@ public class AnotacoesDTO {
     @NotBlank(message = "Descricão não informada!")
     private String descricao;
     @DateTimeFormat(pattern="yyyy-MM-dd")
+    @NotNull(message = "Informe a data da anotação")
     private LocalDate data;
 }

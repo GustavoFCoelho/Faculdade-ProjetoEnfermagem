@@ -30,7 +30,7 @@ public class AgendaController {
     private final PessoaDTOConverter pessoaDTOConverter;
     private final PessoaService pessoaService;
 
-    @GetMapping
+    @GetMapping("agenda")
     public ModelAndView home(ModelMap map){
         map.addAttribute("conteudo", "/age/agenda");
         map.addAttribute("agenda", agendaService.buscarPendentes());
