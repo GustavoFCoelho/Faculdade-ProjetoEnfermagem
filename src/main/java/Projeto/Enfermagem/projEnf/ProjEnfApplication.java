@@ -32,22 +32,22 @@ public class ProjEnfApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Pessoa pessoa = Pessoa.builder()
-				.cpf("122.476.359-97")
-				.dataentrada(LocalDate.now())
-				.datanascimento(LocalDate.now())
-				.nome("Robson")
-				.sobrenome("Figueiredo")
-				.rg("1431235")
-				.sexo("HOMEM")
-				.tipopessoa("IDOSO")
-				.build();
-
-		pessoaRepository.save(pessoa);
-
-		User user = User.builder()
-				.login("ads").senha(encoder.encode("ads")).pessoa(pessoa).build();
-
-		userRepository.save(user);
+//		Pessoa pessoa = Pessoa.builder()
+//				.cpf("122.476.359-97")
+//				.dataentrada(LocalDate.now())
+//				.datanascimento(LocalDate.now())
+//				.nome("Robson")
+//				.sobrenome("Figueiredo")
+//				.rg("1431235")
+//				.sexo("HOMEM")
+//				.tipopessoa("IDOSO")
+//				.build();
+//
+//		pessoaRepository.save(pessoa);
+//
+//		User user = User.builder()
+//				.login("ads").senha(encoder.encode("ads")).pessoa(pessoa).build();
+//
+//		userRepository.save(user);
 	}
 }

@@ -28,6 +28,7 @@ public class PessoaController {
     private final PessoaDTOConverter converter;
     private final IdosoDTOConverter idosoConverter;
     private final UserDTOConverter userDTOConverter;
+
     @GetMapping
     public ModelAndView index(ModelMap model) {
         model.addAttribute("pessoa", new PessoaDTO());
@@ -48,15 +49,20 @@ public class PessoaController {
         }
         pessoa = converter.toDTO(pessoaService.savePessoa(converter.toModel(pessoa)));
         if (pessoa.getTipopessoa().equals("CUIDADOR")) {
-            UserDTO userDTO = UserDTO.builder()
-                    .pessoaId(pessoa.getId())
-                    .build();
-
+            UserDTO userDTO = userDTOConverter.toDTO(pessoaService.buscarUser(pessoa.getId()));
+            if (userDTO == null) {
+                userDTO = UserDTO.builder()
+                        .pessoaId(pessoa.getId())
+                        .build();
+            }
             map.addAttribute("user", userDTO);
         } else {
-            IdosoDTO idosoDTO = IdosoDTO.builder()
-                    .pessoaId(pessoa.getId())
-                    .build();
+            IdosoDTO idosoDTO = idosoConverter.toDTO(pessoaService.buscaIdoso(pessoa.getId()));
+            if(idosoDTO == null) {
+                idosoDTO = IdosoDTO.builder()
+                        .pessoaId(pessoa.getId())
+                        .build();
+            }
             map.addAttribute("idoso", idosoDTO);
             map.addAttribute("rel", pessoaService.chamarReligoes());
         }
@@ -97,26 +103,53 @@ public class PessoaController {
     }
 
     @GetMapping("/prontuario")
-    public ModelAndView prontuário(ModelMap map){
+    public ModelAndView prontuário(ModelMap map) {
         List<PessoaModel> list = pessoaService.getAllIdososPessoas();
-        if(list.size() == 0){
+        if (list.size() == 0) {
             map.addAttribute("message", "Ainda não foram cadastrados idosos no sistema!");
             map.addAttribute("conteudo", "genericpage");
             return new ModelAndView("layout", map);
         }
         map.addAttribute("idosos", list);
-        map.addAttribute("conteudo","/pessoa/prontuario");
+        map.addAttribute("conteudo", "/pessoa/prontuario");
         map.addAttribute("idoso", new PessoaDTO());
         return new ModelAndView("layout", map);
     }
 
     @GetMapping("/prontuario/buscar")
-    public ModelAndView callPront(PessoaDTO idoso, ModelMap map){
+    public ModelAndView callPront(PessoaDTO idoso, ModelMap map) {
         map.addAttribute("prontuario", pessoaService.getProntuario(idoso.getId()));
         map.addAttribute("idosos", pessoaService.getAllIdososPessoas());
-        map.addAttribute("conteudo","/pessoa/prontuario");
+        map.addAttribute("conteudo", "/pessoa/prontuario");
         map.addAttribute("idoso", new PessoaDTO());
         return new ModelAndView("layout", map);
     }
 
+    @GetMapping("/listaidoso")
+    public ModelAndView listar(ModelMap map) {
+        map.addAttribute("listaidoso", converter.toDTOList(pessoaService.getAllIdososPessoas()));
+        map.addAttribute("conteudo", "/pessoa/lista-idoso");
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/listafuncionario")
+    public ModelAndView listarFuncionarios(ModelMap map) {
+        map.addAttribute("listauser", converter.toDTOList(pessoaService.getAllFuncionarioPessoa()));
+        map.addAttribute("conteudo", "/pessoa/lista-idoso");
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/alteraridoso/{id}")
+    public ModelAndView buscaIdoso(@PathVariable Long id, ModelMap map) {
+        map.addAttribute("pessoa", converter.toDTO(pessoaService.buscaPessoa(id)));
+        map.addAttribute("conteudo", "/pessoa/cadastro");
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/alterarfuncionario/{id}")
+    public ModelAndView buscaFuncionario(@PathVariable Long id, ModelMap map) {
+        map.addAttribute("pessoa", converter.toDTO(pessoaService.buscaPessoa(id)));
+        map.addAttribute("conteudo", "/pessoa/cadastro");
+        return new ModelAndView("layout", map);
+    }
 }

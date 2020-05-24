@@ -1,17 +1,11 @@
 package Projeto.Enfermagem.projEnf.resource.service;
 
-import Projeto.Enfermagem.projEnf.datastore.database.repository.PessoaRepository;
-import Projeto.Enfermagem.projEnf.datastore.database.repository.UserRepository;
-import Projeto.Enfermagem.projEnf.datastore.impl.AnotacoesDatastore;
-import Projeto.Enfermagem.projEnf.datastore.impl.IdosoDatastore;
-import Projeto.Enfermagem.projEnf.datastore.impl.ReligiaoDatastore;
-import Projeto.Enfermagem.projEnf.datastore.impl.ResponsavelDatastore;
+import Projeto.Enfermagem.projEnf.datastore.impl.*;
 import Projeto.Enfermagem.projEnf.models.converter.dto.ProntuarioConverter;
-import Projeto.Enfermagem.projEnf.models.converter.entity.PessoaEntityConverter;
-import Projeto.Enfermagem.projEnf.models.converter.entity.UserEntityConverter;
 import Projeto.Enfermagem.projEnf.models.dto.ProntuarioDTO;
 import Projeto.Enfermagem.projEnf.models.model.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,19 +14,19 @@ import java.util.List;
 @RequiredArgsConstructor
 public class PessoaService {
 
-    private final PessoaRepository pessoaRepository;
-    private final UserRepository userRepository;
+    private final PessoaDatastore pessoaDatastore;
+    private final UserDatastore userDatastore;
     private final IdosoDatastore idosoDatastore;
     private final ReligiaoDatastore religiaoDatastore;
     private final AnotacoesDatastore anotacoesDatastore;
     private final ResponsavelDatastore responsavelDatastore;
 
-    private final PessoaEntityConverter converter;
-    private final UserEntityConverter userEntityConverter;
     private final ProntuarioConverter prontuarioConverter;
 
+    private PasswordEncoder encoder;
+
     public PessoaModel savePessoa(PessoaModel pac) {
-        return converter.toModel(pessoaRepository.save(converter.toEntity(pac)));
+        return pessoaDatastore.salvar(pac);
     }
 
     public IdosoModel saveIdoso(IdosoModel idoso) {
@@ -40,7 +34,8 @@ public class PessoaService {
     }
 
     public UserModel saveUser(UserModel model) {
-        return userEntityConverter.toModel(userRepository.save(userEntityConverter.toEntity(model)));
+        model.setSenha(encoder.encode(model.getSenha()));
+        return userDatastore.salvar(model);
     }
 
     public List<ReligiaoModel> chamarReligoes() {
@@ -60,11 +55,31 @@ public class PessoaService {
     }
 
     public ProntuarioDTO getProntuario(Long id){
-        PessoaModel pessoaModel = converter.toModel(pessoaRepository.findById(id).orElse(null));
+        PessoaModel pessoaModel = pessoaDatastore.acharPorId(id);
         List<AnotacoesModel> anotacoes = anotacoesDatastore.acharTodosPorPessoaId(id);
         ResponsavelModel responsavelModel = responsavelDatastore.acharPorPessoaId(id);
         IdosoModel idosoModel = idosoDatastore.acharPorPessoaId(id);
         ReligiaoModel religiaoModel = religiaoDatastore.acharPorId(idosoModel.getReligiaoId());
         return prontuarioConverter.criar(pessoaModel, anotacoes, religiaoModel, responsavelModel, idosoModel);
+    }
+
+    public PessoaModel buscaPessoa(Long id) {
+        return pessoaDatastore.acharPorId(id);
+    }
+
+    public List<PessoaModel> getAllFuncionarioPessoa() {
+        return userDatastore.acharTodosFuncionarioPessoa();
+    }
+
+    public UserModel buscarUser(Long id) {
+        return userDatastore.findByPessoaID(id);
+    }
+
+    public IdosoModel buscaIdoso(Long id) {
+        return idosoDatastore.acharPorPessoaId(id);
+    }
+
+    public ReligiaoModel buscaReligiao(Long id) {
+        return religiaoDatastore.acharPorId(id);
     }
 }

@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 public class MedicamentoModel {
     private int id;
     private String nome;
-    private String infomarcao;
+    private String informacao;
     private String dosagem;
 }

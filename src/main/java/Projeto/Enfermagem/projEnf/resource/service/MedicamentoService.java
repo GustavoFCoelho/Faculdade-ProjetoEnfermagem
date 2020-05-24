@@ -20,4 +20,8 @@ public class MedicamentoService {
     public List<MedicamentoModel> getAll(){
         return datastore.buscarTodos();
     }
+
+    public MedicamentoModel getOne(Long id) {
+        return datastore.buscarPorId(id);
+    }
 }

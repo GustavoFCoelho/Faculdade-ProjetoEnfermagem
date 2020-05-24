@@ -21,4 +21,8 @@ public class MedicamentoDatastore {
     public List<MedicamentoModel> buscarTodos(){
         return converter.toModelList(repository.findAll());
     }
+
+    public MedicamentoModel buscarPorId(Long id) {
+        return converter.toModel(repository.findById(id.intValue()).orElse(null));
+    }
 }

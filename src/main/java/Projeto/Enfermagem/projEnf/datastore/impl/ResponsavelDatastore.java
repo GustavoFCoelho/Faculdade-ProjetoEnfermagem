@@ -6,6 +6,8 @@ import Projeto.Enfermagem.projEnf.models.model.ResponsavelModel;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @RequiredArgsConstructor
 public class ResponsavelDatastore {
@@ -18,5 +20,13 @@ public class ResponsavelDatastore {
 
     public ResponsavelModel acharPorPessoaId(Long id) {
         return converter.toModel(repository.findByPessoaId(id));
+    }
+
+    public List<ResponsavelModel> buscarTodos() {
+        return converter.toModelList(repository.findAll());
+    }
+
+    public ResponsavelModel acharPorId(Long id) {
+        return converter.toModel(repository.findById(id.intValue()).orElse(null));
     }
 }

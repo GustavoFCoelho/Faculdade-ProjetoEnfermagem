@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -36,6 +37,20 @@ public class MedicamentoController {
         medicamentoService.save(converter.toModel(medicamento));
         map.addAttribute("message", "Cadastrado com sucesso");
         map.addAttribute("conteudo", "genericpage");
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/listamedicamento")
+    public ModelAndView buscar(ModelMap map) {
+        map.addAttribute("listamedicamento", converter.toDTOList(medicamentoService.getAll()));
+        map.addAttribute("conteudo", "/med/lista");
+        return new ModelAndView("layout", map);
+    }
+
+    @GetMapping("/alteramedicamento/{id}")
+    public ModelAndView buscarRel(@PathVariable Long id, ModelMap map) {
+        map.addAttribute("medicamento", converter.toDTO(medicamentoService.getOne(id)));
+        map.addAttribute("conteudo", "/med/cadastro");
         return new ModelAndView("layout", map);
     }
 }
