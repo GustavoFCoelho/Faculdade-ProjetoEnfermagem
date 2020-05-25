@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<div th:fragment="corpo">
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <!-- Cria uma linha -->
+                <div class="col-12">
+                    <!-- Espaçamento de colunas -->
+                    <h1 class="text-center">Lista de idosos</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-light">
+            <tr>
+                <th>Nome</th>
+                <th>Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="responsavel : ${listaresponsavel}">
+                <td><span th:text="${responsavel.nome} + ' ' + ${responsavel.sobrenome}"></span></td>
+                <td><a class="btn btn-info" th:href="@{/resp/alteraresposavel/} + ${responsavel.id}"><i class="fas fa-edit"></i> Editar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</html>
